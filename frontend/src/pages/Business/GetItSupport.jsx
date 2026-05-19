@@ -6,7 +6,7 @@ function GetItSupport() {
 
       <h1 className="text-5xl font-bold">
 
-        this is the page for the business
+        this is the page for the business who is going to request the technician help
 
       </h1>
 
