@@ -17,8 +17,9 @@ function BecomeTechnicians() {
         technician profile and start receiving service requests.
 
       </p>
+  
       <p>   you have an account ? </p>
-       <div className="flex gap-3">
+       <div className="flex gap-3"> 
 
           <button className="px-5 py-3 border border-blue-600 text-blue-600 rounded-xl hover:bg-blue-50 hover:scale-105  transition">
 
