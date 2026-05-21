@@ -1,0 +1,234 @@
+import loginBackground from '../../assets/loginBackground.png'
+
+export default function SignUp() {
+
+  return (
+
+    <main
+      className="min-h-screen flex items-center justify-center px-6 py-20 bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${loginBackground})`,
+      }}
+    >
+
+      {/* SIGN UP CARD */}
+
+      <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+
+
+        {/* LEFT SIDE */}
+
+        <div className="bg-[#041B4D] text-white p-14 flex flex-col justify-center">
+
+          <p className="text-blue-300 font-semibold tracking-widest uppercase mb-4">
+
+            Join Fixinit
+
+          </p>
+
+          <h1 className="text-5xl font-bold leading-tight">
+
+            Create Your
+            <br />
+            Fixinit Account
+
+          </h1>
+
+          <p className="mt-8 text-blue-100 leading-8 text-lg max-w-md">
+
+            Join our platform to connect with trusted IT technicians and manage your service requests easily.
+
+          </p>
+
+
+          {/* FEATURES */}
+
+          <div className="mt-10 space-y-4 text-blue-100">
+
+            <div className="flex items-center gap-3">
+
+              <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+
+              <p>Fast IT Support</p>
+
+            </div>
+
+            <div className="flex items-center gap-3">
+
+              <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+
+              <p>Verified Technicians</p>
+
+            </div>
+
+            <div className="flex items-center gap-3">
+
+              <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+
+              <p>Emergency Assistance</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* RIGHT SIDE */}
+
+        <div className="p-14 flex flex-col justify-center">
+
+          <h2 className="text-4xl font-bold text-gray-900">
+
+            Sign Up
+
+          </h2>
+
+          <p className="text-gray-500 mt-3">
+
+            Create your account below.
+
+          </p>
+
+
+          {/* FORM */}
+
+          <form className="mt-10 space-y-6">
+
+
+            {/* FULL NAME */}
+
+            <div>
+
+              <label className="block text-gray-700 font-medium mb-3">
+
+                Full Name
+
+              </label>
+
+              <input
+                type="text"
+                placeholder="Enter your full name"
+                className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
+              />
+
+            </div>
+
+
+            {/* EMAIL */}
+
+            <div>
+
+              <label className="block text-gray-700 font-medium mb-3">
+
+                Email Address
+
+              </label>
+
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
+              />
+
+            </div>
+
+
+            {/* ROLE */}
+
+            <div>
+
+              <label className="block text-gray-700 font-medium mb-3">
+
+                Account Type
+
+              </label>
+
+              <select className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500">
+
+                <option>Select account type</option>
+
+                <option>Business Owner</option>
+
+                <option>Technician</option>
+
+              </select>
+
+            </div>
+
+
+            {/* PASSWORD */}
+
+            <div>
+
+              <label className="block text-gray-700 font-medium mb-3">
+
+                Password
+
+              </label>
+
+              <input
+                type="password"
+                placeholder="Create a password"
+                className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
+              />
+
+            </div>
+
+
+            {/* CONFIRM PASSWORD */}
+
+            <div>
+
+              <label className="block text-gray-700 font-medium mb-3">
+
+                Confirm Password
+
+              </label>
+
+              <input
+                type="password"
+                placeholder="Confirm your password"
+                className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
+              />
+
+            </div>
+
+
+            {/* BUTTON */}
+
+            <button
+              type="submit"
+              className="w-full bg-[#041B4D] text-white py-4 rounded-2xl text-lg font-semibold hover:bg-blue-900 transition"
+            >
+
+              Create Account
+
+            </button>
+
+          </form>
+
+
+          {/* LOGIN */}
+
+          <p className="text-gray-600 mt-8 text-center">
+
+            Already have an account?
+
+            <span className="text-blue-600 font-semibold cursor-pointer hover:underline ml-2">
+
+              Sign In
+
+            </span>
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  )
+
+}

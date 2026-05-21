@@ -6,12 +6,14 @@ import BecomeTechnician from './pages/Technician/BecomeTechnician'
 import GetItSupport from './pages/business/GetItSupport'
 import Emergency from './pages/Emergency/Emergency'
 import Login from './pages/Login/Login'
+import SignUp from './pages/SignUp/SignUp'
 import TechnicianDashboard from './pages/Technician/TechnicianDashboard'
+import BusinessDashboard from './pages/Business/BusinessDashboard'
 import { Routes, Route , useLocation } from 'react-router-dom'
 function App() {
 
 const location = useLocation()
-const hideLayout =location.pathname === '/technician-dashboard'
+const hideLayout =location.pathname === '/technician-dashboard' || location.pathname === '/business-dashboard'
 
 
 
@@ -33,7 +35,9 @@ const hideLayout =location.pathname === '/technician-dashboard'
   <Route path="/get-it-support" element={<GetItSupport />} />
   <Route path="/emergency" element={<Emergency />}/>
   <Route path="/login" element={<Login />}/>
+  <Route path="sign-up" element={<SignUp /> }/>
   <Route path="/technician-dashboard" element={<TechnicianDashboard/>}/>
+  <Route path="/business-dashboard" element={<BusinessDashboard/>}/>
 
 </Routes>
       </main>

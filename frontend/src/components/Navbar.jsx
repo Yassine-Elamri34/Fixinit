@@ -145,13 +145,13 @@ function Navbar() {
           </button>
 </Link>
 
-
+<Link to="/sign-up">
           <button className="px-5 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 hover:scale-105  transition">
 
             Sign Up
 
           </button>
-
+</Link>
         </div>
 
       </div>
