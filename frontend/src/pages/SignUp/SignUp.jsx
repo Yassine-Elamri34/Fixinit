@@ -36,7 +36,7 @@ export default function SignUp() {
 
           <p className="mt-8 text-blue-100 leading-8 text-lg max-w-md">
 
-            Join our platform to connect with trusted IT technicians and manage your service requests easily.
+            Join our platform to connect with trusted IT technicians and manage your service requests easily .
 
           </p>
 
