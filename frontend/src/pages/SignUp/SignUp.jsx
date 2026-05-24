@@ -260,7 +260,6 @@ try {
           <p className="text-gray-600 mt-8 text-center">
 
             Already have an account?
-
             <span className="text-blue-600 font-semibold cursor-pointer hover:underline ml-2">
 
               Sign In

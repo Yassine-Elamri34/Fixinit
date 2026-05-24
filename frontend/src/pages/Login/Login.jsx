@@ -1,6 +1,42 @@
 import loginBackground from '../../assets/loginBackground.png'
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function LoginPage() {
+
+
+const navigate = useNavigate();
+
+
+  const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await axios.post(
+      "https://localhost:7294/api/Auth/login",
+      {
+        email,
+        password,
+      }
+    );
+
+    alert(response.data);
+
+navigate("/technician-dashboard");
+
+  } catch (error) {
+
+    alert(error.response.data);
+
+  }
+};
+
   return (
     <main className="min-h-screen flex items-center justify-center px-6 py-20 bg-cover bg-center bg-no-repeat"
     style={{backgroundImage:`url(${loginBackground})`,
@@ -69,7 +105,10 @@ export default function LoginPage() {
 
           {/* FORM */}
 
-          <form className="mt-10 space-y-6">
+          <form
+  onSubmit={handleSubmit}
+  className="mt-10 space-y-6"
+>
 
             <div>
               <label className="block text-gray-700 font-medium mb-3">
@@ -79,6 +118,8 @@ export default function LoginPage() {
               <input
                 type="email"
                 placeholder="Enter your email"
+                value={email}
+onChange={(e) => setEmail(e.target.value)}
                 className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
               />
             </div>
@@ -92,6 +133,8 @@ export default function LoginPage() {
               <input
                 type="password"
                 placeholder="Enter your password"
+                value={password}
+onChange={(e) => setPassword(e.target.value)}
                 className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
               />
             </div>
@@ -116,6 +159,7 @@ export default function LoginPage() {
 
             <button
               type="submit"
+              
               className="w-full bg-[#041B4D] text-white py-4 rounded-2xl text-lg font-semibold hover:bg-blue-900 transition"
             >
               Login
