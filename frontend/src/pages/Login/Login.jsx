@@ -26,9 +26,21 @@ const handleSubmit = async (e) => {
       }
     );
 
-    alert(response.data);
+    alert(response.data.message);
 
-navigate("/technician-dashboard");
+console.log(response.data.role);
+
+if (response.data.role === "Technician") {
+  
+
+  navigate("/technician-dashboard");
+
+}
+else if (response.data.role === "BusinessOwner") {
+
+  navigate("/business-dashboard");
+
+}
 
   } catch (error) {
 
