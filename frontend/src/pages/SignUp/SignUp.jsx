@@ -1,6 +1,45 @@
+import {useState} from'react'
+import axios from 'axios'
+
 import loginBackground from '../../assets/loginBackground.png'
 
+
+
 export default function SignUp() {
+
+
+const [name, setName] = useState('')
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
+const [role, setRole] = useState('')
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  //stop the page from refreshing
+try {
+  const response = await axios.post(
+    'https://localhost:7294/api/Auth/register',
+    {
+      name,
+      email,
+      password,
+      role
+    }
+  )
+  console.log(response.data)
+  alert('Account created successfully')
+} catch (error) {
+  console.log(error)
+  alert('Somthing went wrong')
+}
+}
+
+
+
+
+
+
 
   return (
 
@@ -93,7 +132,7 @@ export default function SignUp() {
 
           {/* FORM */}
 
-          <form className="mt-10 space-y-6">
+          <form onSubmit={handleSubmit} className="mt-10 space-y-6">
 
 
             {/* FULL NAME */}
@@ -110,6 +149,8 @@ export default function SignUp() {
                 type="text"
                 placeholder="Enter your full name"
                 className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
 
             </div>
@@ -129,6 +170,8 @@ export default function SignUp() {
                 type="email"
                 placeholder="Enter your email"
                 className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
 
             </div>
@@ -144,13 +187,14 @@ export default function SignUp() {
 
               </label>
 
-              <select className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500">
+              <select className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500" value={role}
+  onChange={(e) => setRole(e.target.value)}>
 
-                <option>Select account type</option>
+                <option value="">Select account type</option>
 
-                <option>Business Owner</option>
+                <option value="BusinessOwner">Business Owner</option>
 
-                <option>Technician</option>
+                <option value="Technician">Technician</option>
 
               </select>
 
@@ -167,11 +211,13 @@ export default function SignUp() {
 
               </label>
 
-              <input
-                type="password"
-                placeholder="Create a password"
-                className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
-              />
+             <input
+  type="password"
+  placeholder="Create a password"
+  className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+/>
 
             </div>
 
