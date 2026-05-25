@@ -1,0 +1,6 @@
+@Fixinit.net_HostAddress = http://localhost:5105
+
+GET {{Fixinit.net_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
