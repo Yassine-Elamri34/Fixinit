@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fixinit.net", "Fixinit.net\Fixinit.net.csproj", "{EFEA1990-34A0-4C91-9DE3-AE7B9102EBCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFEA1990-34A0-4C91-9DE3-AE7B9102EBCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFEA1990-34A0-4C91-9DE3-AE7B9102EBCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFEA1990-34A0-4C91-9DE3-AE7B9102EBCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFEA1990-34A0-4C91-9DE3-AE7B9102EBCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6C940B1-898A-491C-AE70-D914D841CF06}
+	EndGlobalSection
+EndGlobal
