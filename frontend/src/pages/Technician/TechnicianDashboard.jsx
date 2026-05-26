@@ -13,7 +13,13 @@ import {
   Printer,
 } from 'lucide-react'
 
+import { useNavigate } from "react-router-dom";
+
+
 function TechnicianDashboard() {
+
+const navigate = useNavigate();
+
 
   return (
 
@@ -59,29 +65,29 @@ function TechnicianDashboard() {
               <p>Schedule</p>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
+            {/* <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <MessageSquare />
               <p>Messages</p>
-            </div>
+            </div> */}
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
+            {/* <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <Wallet />
               <p>Earnings</p>
-            </div>
+            </div> */}
 
             <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <User />
               <p>Profile</p>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
+            {/* <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <Settings />
               <p>Settings</p>
             </div>
             <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <Settings />
               <p>more option </p>
-            </div>
+            </div> */}
 
           </div>
 
@@ -90,10 +96,13 @@ function TechnicianDashboard() {
 
         {/* LOGOUT */}
 
-        <div className="flex items-center gap-4 text-red-500 p-4 rounded-2xl hover:bg-red-50 cursor-pointer transition">
-          <LogOut />
-          <p>Logout</p>
-        </div>
+        <div
+  onClick={() => navigate("/home")}
+  className="flex items-center gap-4 text-red-500 p-4 rounded-2xl hover:bg-red-50 cursor-pointer transition"
+>
+  <LogOut />
+  <p>Logout</p>
+</div>
 
       </aside>
 {/* THE ASIDE IS DONE HERE  */}
