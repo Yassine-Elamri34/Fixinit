@@ -43,8 +43,8 @@ const hideLayout =location.pathname === '/technician-dashboard' || location.path
 
 </Routes>
       </main>
-      <Chatbot />
-
+      
+     {!hideLayout && <Chatbot /> }
 
 
      {!hideLayout && <Footer />}
