@@ -10,6 +10,7 @@ import SignUp from './pages/SignUp/SignUp'
 import TechnicianDashboard from './pages/Technician/TechnicianDashboard'
 import BusinessDashboard from './pages/Business/BusinessDashboard'
 import AdminDashboard from './pages/Admin/Admin'
+import TechnicianProfile from './pages/Technician/TechnicianProfile'
 import { Routes, Route , useLocation } from 'react-router-dom'
 function App() {
 
@@ -40,6 +41,7 @@ const hideLayout =location.pathname === '/technician-dashboard' || location.path
   <Route path="/technician-dashboard" element={<TechnicianDashboard/>}/>
   <Route path="/business-dashboard" element={<BusinessDashboard/>}/>
   <Route path="/admin-dashboard" element={<AdminDashboard />} />
+  <Route path="/technician-profile" element={<TechnicianProfile />} />
 
 </Routes>
       </main>

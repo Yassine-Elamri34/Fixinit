@@ -75,7 +75,9 @@ const navigate = useNavigate();
               <p>Earnings</p>
             </div> */}
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
+            <div 
+            onClick={() => navigate("/technician-profile")}
+            className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <User />
               <p>Profile</p>
             </div>

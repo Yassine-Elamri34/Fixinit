@@ -41,6 +41,9 @@ else if (response.data.role === "BusinessOwner") {
   navigate("/business-dashboard");
 
 }
+else if (response.data.role === "Admin") {
+  navigate("/admin-dashboard");
+}
 
   } catch (error) {
 
