@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 
 
-
+ 
 function TechnicianProfile() {
 const fetchProfile = async () => {
 
@@ -407,3 +407,4 @@ useEffect(() => {
 }
 
 export default TechnicianProfile;
+//fixint the technician profile
