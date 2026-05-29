@@ -15,7 +15,7 @@ import { Routes, Route , useLocation } from 'react-router-dom'
 function App() {
 
 const location = useLocation()
-const hideLayout =location.pathname === '/technician-dashboard' || location.pathname === '/business-dashboard'|| location.pathname === '/admin-dashboard'
+const hideLayout =location.pathname === '/technician-dashboard' || location.pathname === '/business-dashboard'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile'
 
 
 
