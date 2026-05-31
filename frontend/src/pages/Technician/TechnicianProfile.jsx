@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
+
 
 function TechnicianProfile() {
+
+  const navigate = useNavigate();
   const userId = 1;
   const technicianId = 1;
 
@@ -75,26 +81,39 @@ function TechnicianProfile() {
     fetchSchedule();
   }, []);
 
-  const updateProfile = async () => {
-    try {
-      const response = await axios.post(
-        "https://localhost:7294/api/Technician/update-profile",
-        {
-          userId,
-          description,
-          hourlyRate,
-          city,
-          region,
-          isAvailable,
-        }
-      );
+const updateProfile = async () => {
 
-      alert(response.data);
-      fetchProfile();
-    } catch (error) {
-      alert("Error updating profile");
-    }
-  };
+  console.log("Update button clicked");
+
+  try {
+
+    const response = await axios.post(
+      "https://localhost:7294/api/Technician/update-profile",
+      {
+        userId,
+        description,
+        hourlyRate,
+        city,
+        region,
+        isAvailable,
+      }
+    );
+
+    console.log(response);
+
+    alert(response.data);
+
+    fetchProfile();
+
+  } catch (error) {
+
+    console.log(error);
+
+    alert(error.response?.data || error.message);
+
+  }
+
+};
 
   const updateSchedule = async () => {
     try {
@@ -142,7 +161,13 @@ function TechnicianProfile() {
   return (
     <main className="min-h-screen bg-gray-100 p-10">
       <div className="max-w-5xl mx-auto space-y-6">
-
+<button
+  type="button"
+  onClick={() => navigate("/technician-dashboard")}
+  className="bg-gray-700 text-white px-5 py-2 rounded-xl hover:bg-gray-800"
+>
+  Back to Dashboard
+</button>
         <div className="bg-white rounded-3xl shadow-md p-8 flex items-center gap-8">
           <div className="w-32 h-32 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center">
             {profilePicture ? (
