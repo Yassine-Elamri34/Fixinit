@@ -43,3 +43,6 @@ namespace Fixinit.net.Services
         }
     }
 }
+
+//Simple Mail Transfer Protocol
+//Gmail SMTP server

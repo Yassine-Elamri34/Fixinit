@@ -2,6 +2,7 @@
 using Fixinit.net.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fixinit.net.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260528162553_AddTechnicianTable")]
+    partial class AddTechnicianTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,19 +35,11 @@ namespace Fixinit.net.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<decimal>("HourlyRate")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<string>("ProfilePicture")
                         .IsRequired()
@@ -60,35 +55,6 @@ namespace Fixinit.net.Migrations
                     b.HasKey("TechnicianId");
 
                     b.ToTable("Technicians");
-                });
-
-            modelBuilder.Entity("Fixinit.net.Models.TechnicianSchedule", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("DayOfWeek")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("EndHour")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("StartHour")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("TechnicianId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TechnicianSchedules");
                 });
 
             modelBuilder.Entity("Fixinit.net.Models.User", b =>

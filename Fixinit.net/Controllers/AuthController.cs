@@ -152,6 +152,7 @@ namespace Fixinit.net.Controllers
                 message = "Login successful",
                 role = user.Role
             });
+            // we sent the exact role
             //login success 
         }
     }
