@@ -65,10 +65,13 @@ function BusinessDashboard() {
               <p>Emergency Help</p>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
-              <User />
-              <p>Profile</p>
-            </div>
+           <div
+  onClick={() => navigate("/business-profile")}
+  className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition"
+>
+  <User />
+  <p>Profile</p>
+</div>
 
           </div>
 
