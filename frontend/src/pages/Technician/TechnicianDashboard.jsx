@@ -86,10 +86,13 @@ function TechnicianDashboard() {
               <p>Requests</p>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
-              <CalendarDays />
-              <p>Schedule</p>
-            </div>
+           <div
+  onClick={() => navigate("/technician-schedule")}
+  className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition"
+>
+  <CalendarDays />
+  <p>Schedule</p>
+</div>
 
             <div
               onClick={() => navigate("/technician-profile")}
@@ -152,7 +155,15 @@ function TechnicianDashboard() {
 
             <div className="flex items-center gap-6">
 
-              <div className="w-24 h-24 rounded-full bg-gray-200"></div>
+              <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
+  {technician?.profilePicture ? (
+    <img
+      src={`https://localhost:7294${technician.profilePicture}`}
+      alt="Profile"
+      className="w-full h-full object-cover"
+    />
+  ) : null}
+</div>
 
               <div>
 
@@ -160,13 +171,14 @@ function TechnicianDashboard() {
                   Welcome back,
                 </p>
 
-                <h2 className="text-3xl font-bold text-gray-900 mt-1">
-                  {technician?.city || "No City"}
-                </h2>
+               <h2 className="text-3xl font-bold text-gray-900 mt-1">
+  {technician?.firstName} {technician?.lastName}
+</h2>
 
-                <p className="text-gray-600 mt-2">
-                  {technician?.description || "No Description"}
-                </p>
+               <p className="text-gray-600 mt-2">
+  {technician?.city}, {technician?.region}
+</p>
+
 
               </div>
 

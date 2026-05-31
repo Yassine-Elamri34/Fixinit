@@ -11,11 +11,12 @@ import TechnicianDashboard from './pages/Technician/TechnicianDashboard'
 import BusinessDashboard from './pages/Business/BusinessDashboard'
 import AdminDashboard from './pages/Admin/Admin'
 import TechnicianProfile from './pages/Technician/TechnicianProfile'
+import TechnicianSchedule from './pages/Technician/TechnicianSchedule'
 import { Routes, Route , useLocation } from 'react-router-dom'
 function App() {
 
 const location = useLocation()
-const hideLayout =location.pathname === '/technician-dashboard' || location.pathname === '/business-dashboard'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile'
+const hideLayout =location.pathname === '/technician-dashboard' || location.pathname === '/business-dashboard'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule'
 
 
 
@@ -42,6 +43,7 @@ const hideLayout =location.pathname === '/technician-dashboard' || location.path
   <Route path="/business-dashboard" element={<BusinessDashboard/>}/>
   <Route path="/admin-dashboard" element={<AdminDashboard />} />
   <Route path="/technician-profile" element={<TechnicianProfile />} />
+   <Route path="/technician-schedule" element={<TechnicianSchedule />} />
 
 </Routes>
       </main>

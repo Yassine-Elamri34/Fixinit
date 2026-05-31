@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 
 function TechnicianProfile() {
-
+ const [firstName, setFirstName] = useState("");
+const [lastName, setLastName] = useState("");
   const navigate = useNavigate();
   const userId = 1;
   const technicianId = 1;
@@ -20,22 +21,15 @@ function TechnicianProfile() {
   const [region, setRegion] = useState("");
   const [isAvailable, setIsAvailable] = useState(false);
 
-  const [schedule, setSchedule] = useState([
-    { day: "Monday", isAvailable: false, startHour: "", endHour: "" },
-    { day: "Tuesday", isAvailable: false, startHour: "", endHour: "" },
-    { day: "Wednesday", isAvailable: false, startHour: "", endHour: "" },
-    { day: "Thursday", isAvailable: false, startHour: "", endHour: "" },
-    { day: "Friday", isAvailable: false, startHour: "", endHour: "" },
-    { day: "Saturday", isAvailable: false, startHour: "", endHour: "" },
-    { day: "Sunday", isAvailable: false, startHour: "", endHour: "" },
-  ]);
+
 
   const fetchProfile = async () => {
     try {
       const response = await axios.get(
         `https://localhost:7294/api/Technician/profile/${userId}`
       );
-
+      setFirstName(response.data.firstName || "");
+setLastName(response.data.lastName || "");
       setProfilePicture(response.data.profilePicture || "");
       setDescription(response.data.description || "");
       setHourlyRate(response.data.hourlyRate || "");
@@ -47,39 +41,11 @@ function TechnicianProfile() {
     }
   };
 
-  const fetchSchedule = async () => {
-    try {
-      const response = await axios.get(
-        `https://localhost:7294/api/Technician/schedule/${technicianId}`
-      );
 
-      setSchedule((currentSchedule) =>
-        currentSchedule.map((day) => {
-          const savedDay = response.data.find(
-            (s) => s.dayOfWeek === day.day
-          );
-
-          if (savedDay) {
-            return {
-              day: savedDay.dayOfWeek,
-              isAvailable: savedDay.isAvailable,
-              startHour: savedDay.startHour,
-              endHour: savedDay.endHour,
-            };
-          }
-
-          return day;
-        })
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
-    fetchProfile();
-    fetchSchedule();
-  }, []);
+  fetchProfile();
+}, []);
 
 const updateProfile = async () => {
 
@@ -90,13 +56,15 @@ const updateProfile = async () => {
     const response = await axios.post(
       "https://localhost:7294/api/Technician/update-profile",
       {
-        userId,
-        description,
-        hourlyRate,
-        city,
-        region,
-        isAvailable,
-      }
+  userId,
+  firstName,
+  lastName,
+  description,
+  hourlyRate,
+  city,
+  region,
+  isAvailable,
+}
     );
 
     console.log(response);
@@ -115,25 +83,7 @@ const updateProfile = async () => {
 
 };
 
-  const updateSchedule = async () => {
-    try {
-      const response = await axios.post(
-        "https://localhost:7294/api/Technician/save-schedule",
-        schedule.map((item) => ({
-          technicianId,
-          dayOfWeek: item.day,
-          startHour: item.startHour,
-          endHour: item.endHour,
-          isAvailable: item.isAvailable,
-        }))
-      );
-
-      alert(response.data);
-      fetchSchedule();
-    } catch (error) {
-      alert("Error updating schedule");
-    }
-  };
+ 
 
   const uploadPicture = async () => {
     if (!selectedFile) {
@@ -182,9 +132,9 @@ const updateProfile = async () => {
           </div>
 
           <div className="flex-1">
-            <h1 className="text-4xl font-bold text-blue-700">
-              Technician Profile
-            </h1>
+           <h1 className="text-4xl font-bold text-blue-700">
+  {firstName} {lastName}
+</h1>
 
             <p className="text-gray-600 mt-2">
               {city || "City not set"} {region && `, ${region}`}
@@ -239,7 +189,27 @@ const updateProfile = async () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-5">
               Service Details
             </h2>
+<label className="block mb-2 font-semibold">
+  First Name
+</label>
 
+<input
+  type="text"
+  value={firstName}
+  onChange={(e) => setFirstName(e.target.value)}
+  className="w-full border border-gray-300 rounded-2xl p-4 mb-4"
+/>
+
+<label className="block mb-2 font-semibold">
+  Last Name
+</label>
+
+<input
+  type="text"
+  value={lastName}
+  onChange={(e) => setLastName(e.target.value)}
+  className="w-full border border-gray-300 rounded-2xl p-4 mb-4"
+/>
             <label className="block mb-2 font-semibold">Hourly Rate</label>
             <input
               type="number"
@@ -280,80 +250,7 @@ const updateProfile = async () => {
 
         
 
-        <div className="bg-white rounded-3xl shadow-md p-8">
-          <h2 className="text-2xl font-bold text-blue-700 mb-6">
-            Weekly Schedule
-          </h2>
-
-          <div className="space-y-5">
-            {schedule.map((item, index) => (
-              <div
-                key={index}
-                className="border border-gray-300 rounded-2xl p-5"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-bold text-lg">{item.day}</h3>
-
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="checkbox"
-                      checked={item.isAvailable}
-                      onChange={(e) => {
-                        const updatedSchedule = [...schedule];
-                        updatedSchedule[index].isAvailable = e.target.checked;
-                        setSchedule(updatedSchedule);
-                      }}
-                    />
-
-                    <p>Available</p>
-                  </div>
-                </div>
-
-                {item.isAvailable ? (
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block mb-2">Start Hour</label>
-                      <input
-                        type="time"
-                        value={item.startHour}
-                        onChange={(e) => {
-                          const updatedSchedule = [...schedule];
-                          updatedSchedule[index].startHour = e.target.value;
-                          setSchedule(updatedSchedule);
-                        }}
-                        className="w-full border border-gray-300 rounded-xl p-3"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block mb-2">End Hour</label>
-                      <input
-                        type="time"
-                        value={item.endHour}
-                        onChange={(e) => {
-                          const updatedSchedule = [...schedule];
-                          updatedSchedule[index].endHour = e.target.value;
-                          setSchedule(updatedSchedule);
-                        }}
-                        className="w-full border border-gray-300 rounded-xl p-3"
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <p className="text-gray-500">Unavailable</p>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <button
-            type="button"
-            onClick={updateSchedule}
-            className="mt-8 w-full bg-blue-700 text-white py-4 rounded-2xl font-semibold hover:bg-blue-800"
-          >
-            Update Schedule
-          </button>
-        </div>
+        
 
       </div>
     </main>
