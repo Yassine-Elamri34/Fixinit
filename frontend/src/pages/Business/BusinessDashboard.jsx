@@ -109,7 +109,7 @@ useEffect(() => {
         {/* LOGOUT */}
 
         <div
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/login")}
           className="flex items-center gap-4 text-red-500 p-4 rounded-2xl hover:bg-red-50 cursor-pointer transition"
         >
           <LogOut />
