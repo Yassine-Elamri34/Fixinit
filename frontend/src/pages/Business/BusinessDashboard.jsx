@@ -83,10 +83,13 @@ useEffect(() => {
               <p>My Requests</p>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
-              <Users />
-              <p>Technicians</p>
-            </div>
+            <div
+  onClick={() => navigate("/technician")}
+  className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition"
+>
+  <Users />
+  <p>Technicians</p>
+</div>
 
             <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <AlertTriangle />
