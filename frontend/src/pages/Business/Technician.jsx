@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 function Technician() {
+  const navigate = useNavigate();
  const [showRequestForm, setShowRequestForm] = useState(false);
 const [submittedRequests, setSubmittedRequests] = useState([]);
 const [selectedTechnicianId, setSelectedTechnicianId] = useState(null);
@@ -26,6 +29,10 @@ const createRequest = async () => {
     );
 
     alert("Request submitted successfully");
+    setSubmittedRequests([
+  ...submittedRequests,
+  selectedTechnicianId
+]);
 
     setShowRequestForm(false);
 
@@ -73,7 +80,16 @@ const createRequest = async () => {
         <h1 className="text-4xl font-bold text-green-700 mb-8">
           Available Technicians
         </h1>
-        
+        <div className="mb-6">
+
+  <button
+    onClick={() => navigate("/business-dashboard")}
+    className="bg-gray-700 text-white px-5 py-3 rounded-xl hover:bg-gray-800"
+  >
+    ← Back to Dashboard
+  </button>
+
+</div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
@@ -99,21 +115,34 @@ const createRequest = async () => {
               <p className="text-sm text-gray-600 mt-3">
                 {technician.description}
               </p>
+{
+  submittedRequests.includes(
+    technician.technicianId
+  ) ? (
 
-              <button
-  onClick={() => {
+    <div className="w-full mt-5 bg-green-100 text-green-700 py-3 rounded-xl text-center font-semibold">
+      Request Submitted ✅
+    </div>
 
-    setSelectedTechnicianId(
-      technician.technicianId
-    );
+  ) : (
 
-    setShowRequestForm(true);
+    <button
+      onClick={() => {
 
-  }}
-  className="w-full mt-5 bg-green-700 text-white py-3 rounded-xl hover:bg-green-800"
->
-  Request Help
-</button>
+        setSelectedTechnicianId(
+          technician.technicianId
+        );
+
+        setShowRequestForm(true);
+
+      }}
+      className="w-full mt-5 bg-green-700 text-white py-3 rounded-xl hover:bg-green-800"
+    >
+      Request Help
+    </button>
+
+  )
+}
 
             </div>
 
