@@ -34,7 +34,7 @@ const hideLayout =location.pathname === '/technician-dashboard' || location.path
       <main className="flex-grow">
       <Routes>
 
-  <Route path="/home" element={<Home />} />
+  <Route path="/" element={<Home />} />
   <Route path="/become-technician" element={<BecomeTechnician />} />
   <Route path="/get-it-support" element={<GetItSupport />} />
   <Route path="/emergency" element={<Emergency />}/>
