@@ -138,7 +138,7 @@ export default function AdminDashboard() {
 
             <p className="text-gray-500 mt-4 leading-7">
               View business owner activity,
-              requests, and platform interactions.
+              requests, and platform interactions
             </p>
 
             <button
