@@ -13,5 +13,11 @@ namespace Fixinit.net.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Technician> Technicians { get; set; }
+
+        public DbSet<TechnicianSchedule> TechnicianSchedules { get; set; }
+
+        public DbSet<BusinessOwner> BusinessOwners { get; set; }
+        public DbSet<Request> Requests { get; set; }
     }
 }
