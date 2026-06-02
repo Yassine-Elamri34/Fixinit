@@ -259,7 +259,7 @@ function BecomeTechnician() {
 
         <div className="max-w-5xl mx-auto px-8">
 
-          <div className="bg-white rounded-3xl shadow-2xl p-14 text-center">
+         <div className="bg-white rounded-3xl shadow-md p-14 text-center">
 
             <h2 className="text-5xl font-bold text-[#041B4D] mb-6">
               Ready to Start?
