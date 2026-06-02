@@ -1,47 +1,291 @@
-function BecomeTechnicians() {
+import { useNavigate } from "react-router-dom";
+import {
+  User,
+  Calendar,
+  Briefcase,
+  Star,
+  Wrench,
+  Shield,
+} from "lucide-react";
+
+function BecomeTechnician() {
+  const navigate = useNavigate();
 
   return (
+    <main className="min-h-screen bg-gray-50">
 
-    <div className="min-h-screen p-20">
+      {/* HERO */}
 
-      <h1 className="text-5xl font-bold leading-tight">
+      <section className="bg-gradient-to-r from-[#041B4D] to-blue-700 text-white py-24">
 
-        Join the Fixinit Technician Network
+        <div className="max-w-7xl mx-auto px-8 text-center">
 
-      </h1>
+          <h1 className="text-6xl font-bold mb-6">
+            Become a Technician
+          </h1>
 
-      <p className="text-xl text-gray-600 mt-6 max-w-3xl leading-9">
+          <p className="text-xl max-w-3xl mx-auto leading-relaxed">
+            Join Fixinit and connect with local businesses that
+            need reliable IT support. Build your reputation,
+            manage your schedule, and grow your opportunities.
+          </p>
 
-        Become part of our growing platform and connect with local businesses
-        looking for reliable IT support. Follow the steps below to create your
-        technician profile and start receiving service requests.
-
-      </p>
-  
-      <p>   you have an account ? </p>
-       <div className="flex gap-3"> 
-
-          <button className="px-5 py-3 border border-blue-600 text-blue-600 rounded-xl hover:bg-blue-50 hover:scale-105  transition">
-
-            Log In
-
-          </button>
-
-
-
-          <button className="px-5 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 hover:scale-105  transition">
-
-            Sign Up
-
+          <button
+            onClick={() => navigate("/sign-up")}
+            className="mt-10 bg-green-600 hover:bg-green-700 px-8 py-4 rounded-2xl font-bold text-lg transition"
+          >
+            Join Fixinit Today
           </button>
 
         </div>
 
-    </div>
-    
+      </section>
 
-  )
+      {/* BENEFITS */}
 
+      <section className="max-w-7xl mx-auto px-8 py-20">
+
+        <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-14">
+          Why Join Fixinit?
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div className="bg-white p-8 rounded-3xl shadow-md hover:shadow-lg transition">
+
+            <Briefcase
+              size={40}
+              className="text-blue-700 mb-4"
+            />
+
+            <h3 className="text-xl font-bold mb-3">
+              More Opportunities
+            </h3>
+
+            <p className="text-gray-600">
+              Receive direct IT service requests from businesses
+              actively searching for support.
+            </p>
+
+          </div>
+
+          <div className="bg-white p-8 rounded-3xl shadow-md hover:shadow-lg transition">
+
+            <Calendar
+              size={40}
+              className="text-blue-700 mb-4"
+            />
+
+            <h3 className="text-xl font-bold mb-3">
+              Flexible Schedule
+            </h3>
+
+            <p className="text-gray-600">
+              Choose when you're available and work according
+              to your own schedule.
+            </p>
+
+          </div>
+
+          <div className="bg-white p-8 rounded-3xl shadow-md hover:shadow-lg transition">
+
+            <Star
+              size={40}
+              className="text-blue-700 mb-4"
+            />
+
+            <h3 className="text-xl font-bold mb-3">
+              Build Your Reputation
+            </h3>
+
+            <p className="text-gray-600">
+              Earn ratings and reviews that help grow your
+              profile and attract more clients.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* HOW IT WORKS */}
+
+      <section className="bg-white py-20">
+
+        <div className="max-w-7xl mx-auto px-8">
+
+          <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-16">
+            How It Works
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+            <div className="text-center">
+
+              <User
+                size={50}
+                className="mx-auto text-blue-700 mb-4"
+              />
+
+              <h3 className="font-bold text-xl mb-3">
+                Create Your Profile
+              </h3>
+
+              <p className="text-gray-600">
+                Add your skills, experience, location,
+                description, and hourly rate.
+              </p>
+
+            </div>
+
+            <div className="text-center">
+
+              <Calendar
+                size={50}
+                className="mx-auto text-blue-700 mb-4"
+              />
+
+              <h3 className="font-bold text-xl mb-3">
+                Set Your Availability
+              </h3>
+
+              <p className="text-gray-600">
+                Define your weekly schedule so businesses know
+                when you are available.
+              </p>
+
+            </div>
+
+            <div className="text-center">
+
+              <Briefcase
+                size={50}
+                className="mx-auto text-blue-700 mb-4"
+              />
+
+              <h3 className="font-bold text-xl mb-3">
+                Receive Requests
+              </h3>
+
+              <p className="text-gray-600">
+                Accept or decline requests and start helping
+                local businesses.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* SERVICES */}
+
+      <section className="max-w-7xl mx-auto px-8 py-20">
+
+        <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-14">
+          Popular Services
+        </h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+          {[
+            "Computer Repair",
+            "Network Support",
+            "Printer Setup",
+            "POS Systems",
+            "Software Installation",
+            "Virus Removal",
+            "Hardware Upgrades",
+            "Internet Issues",
+            "IT Consulting",
+            "Emergency Support",
+          ].map((service) => (
+
+            <div
+              key={service}
+              className="bg-white p-5 rounded-2xl shadow-md text-center hover:shadow-lg transition"
+            >
+
+              <Wrench
+                size={24}
+                className="mx-auto text-blue-700 mb-3"
+              />
+
+              <p className="font-medium">
+                {service}
+              </p>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* WHO CAN JOIN */}
+
+      <section className="bg-white py-20">
+
+        <div className="max-w-6xl mx-auto px-8 text-center">
+
+          <Shield
+            size={60}
+            className="mx-auto text-blue-700 mb-6"
+          />
+
+          <h2 className="text-4xl font-bold text-[#041B4D] mb-8">
+            Who Can Join?
+          </h2>
+
+          <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Fixinit welcomes IT support specialists, help desk
+            technicians, network technicians, system
+            administrators, computer repair professionals,
+            freelance consultants, and students with strong
+            technical skills.
+          </p>
+
+        </div>
+
+      </section>
+
+      {/* CTA */}
+
+      <section className="bg-gradient-to-b from-white via-blue-50 to-[#041B4D] py-24">
+
+        <div className="max-w-5xl mx-auto px-8">
+
+          <div className="bg-white rounded-3xl shadow-2xl p-14 text-center">
+
+            <h2 className="text-5xl font-bold text-[#041B4D] mb-6">
+              Ready to Start?
+            </h2>
+
+            <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+              Create your technician account today and begin
+              receiving IT support requests from businesses in
+              your area.
+            </p>
+
+            <button
+              onClick={() => navigate("/sign-up")}
+              className="bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition"
+            >
+              Become a Technician
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  );
 }
 
-export default BecomeTechnicians
+export default BecomeTechnician;

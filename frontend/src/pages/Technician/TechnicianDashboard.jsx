@@ -209,43 +209,6 @@ const declineRequest = async (requestId) => {
 
           {/* AVAILABILITY */}
 
-          <div className="bg-white rounded-3xl shadow-md p-8 flex items-center justify-between">
-
-            <div>
-
-              <h2 className="text-2xl font-bold text-gray-900">
-                Availability
-              </h2>
-
-              <p
-                className={`font-semibold mt-3 ${
-                  technician?.isAvailable
-                    ? "text-green-600"
-                    : "text-red-500"
-                }`}
-              >
-                {technician?.isAvailable
-                  ? "Available Now"
-                  : "Unavailable"}
-              </p>
-
-              <p className="text-gray-500 mt-2">
-                {technician?.isAvailable
-                  ? "You are visible to receive new requests"
-                  : "You are currently hidden from requests"}
-              </p>
-
-            </div>
-
-            <div
-              className={`w-16 h-9 rounded-full ${
-                technician?.isAvailable
-                  ? "bg-green-500"
-                  : "bg-gray-400"
-              }`}
-            ></div>
-
-          </div>
 
         </div>
 
