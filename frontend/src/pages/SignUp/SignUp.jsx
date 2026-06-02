@@ -2,12 +2,12 @@ import {useState} from'react'
 import axios from 'axios'
 
 import loginBackground from '../../assets/loginBackground.png'
-
+import { useNavigate } from "react-router-dom";
 
 
 export default function SignUp() {
 
-
+const navigate = useNavigate();
 const [name, setName] = useState('')
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
@@ -260,7 +260,9 @@ try {
           <p className="text-gray-600 mt-8 text-center">
 
             Already have an account?
-            <span className="text-blue-600 font-semibold cursor-pointer hover:underline ml-2">
+            <span 
+            onClick={() => navigate("/login")}
+            className="text-blue-600 font-semibold cursor-pointer hover:underline ml-2">
 
               Sign In
 

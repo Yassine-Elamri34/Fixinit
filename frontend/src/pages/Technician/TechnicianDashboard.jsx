@@ -2,18 +2,50 @@ import {
   LayoutDashboard,
   ClipboardList,
   CalendarDays,
-  MessageSquare,
-  Wallet,
   User,
-  Settings,
   LogOut,
   Bell,
   Monitor,
   Wifi,
   Printer,
-} from 'lucide-react'
+} from "lucide-react";
+
+import { useNavigate } from "react-router-dom";
+
+import { useEffect, useState } from "react";
+
+import axios from "axios";
 
 function TechnicianDashboard() {
+
+  const navigate = useNavigate();
+
+  const [technician, setTechnician] = useState(null);
+
+  useEffect(() => {
+
+    const fetchTechnician = async () => {
+
+      try {
+
+        const response = await axios.get(
+          "https://localhost:7294/api/Technician/profile/1"
+        );
+
+        setTechnician(response.data);
+
+      } catch (error) {
+
+        console.log(error);
+
+      }
+
+    };
+
+    fetchTechnician();
+
+  }, []);
+
 
   return (
 
@@ -54,33 +86,20 @@ function TechnicianDashboard() {
               <p>Requests</p>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
-              <CalendarDays />
-              <p>Schedule</p>
-            </div>
+           <div
+  onClick={() => navigate("/technician-schedule")}
+  className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition"
+>
+  <CalendarDays />
+  <p>Schedule</p>
+</div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
-              <MessageSquare />
-              <p>Messages</p>
-            </div>
-
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
-              <Wallet />
-              <p>Earnings</p>
-            </div>
-
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
+            <div
+              onClick={() => navigate("/technician-profile")}
+              className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition"
+            >
               <User />
               <p>Profile</p>
-            </div>
-
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
-              <Settings />
-              <p>Settings</p>
-            </div>
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
-              <Settings />
-              <p>more option </p>
             </div>
 
           </div>
@@ -90,13 +109,16 @@ function TechnicianDashboard() {
 
         {/* LOGOUT */}
 
-        <div className="flex items-center gap-4 text-red-500 p-4 rounded-2xl hover:bg-red-50 cursor-pointer transition">
+        <div
+          onClick={() => navigate("/home")}
+          className="flex items-center gap-4 text-red-500 p-4 rounded-2xl hover:bg-red-50 cursor-pointer transition"
+        >
           <LogOut />
           <p>Logout</p>
         </div>
 
       </aside>
-{/* THE ASIDE IS DONE HERE  */}
+
 
       {/* MAIN CONTENT */}
 
@@ -133,7 +155,15 @@ function TechnicianDashboard() {
 
             <div className="flex items-center gap-6">
 
-              <div className="w-24 h-24 rounded-full bg-gray-200"></div>
+              <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
+  {technician?.profilePicture ? (
+    <img
+      src={`https://localhost:7294${technician.profilePicture}`}
+      alt="Profile"
+      className="w-full h-full object-cover"
+    />
+  ) : null}
+</div>
 
               <div>
 
@@ -141,13 +171,14 @@ function TechnicianDashboard() {
                   Welcome back,
                 </p>
 
-                <h2 className="text-3xl font-bold text-gray-900 mt-1">
-                  Ahmed Ben Ali
-                </h2>
+               <h2 className="text-3xl font-bold text-gray-900 mt-1">
+  {technician?.firstName} {technician?.lastName}
+</h2>
 
-                <p className="text-gray-600 mt-2">
-                  Network Specialist
-                </p>
+               <p className="text-gray-600 mt-2">
+  {technician?.city}, {technician?.region}
+</p>
+
 
               </div>
 
@@ -166,17 +197,33 @@ function TechnicianDashboard() {
                 Availability
               </h2>
 
-              <p className="text-green-600 font-semibold mt-3">
-                Available Now
+              <p
+                className={`font-semibold mt-3 ${
+                  technician?.isAvailable
+                    ? "text-green-600"
+                    : "text-red-500"
+                }`}
+              >
+                {technician?.isAvailable
+                  ? "Available Now"
+                  : "Unavailable"}
               </p>
 
               <p className="text-gray-500 mt-2">
-                You are visible to receive new requests
+                {technician?.isAvailable
+                  ? "You are visible to receive new requests"
+                  : "You are currently hidden from requests"}
               </p>
 
             </div>
 
-            <div className="w-16 h-9 bg-black rounded-full"></div>
+            <div
+              className={`w-16 h-9 rounded-full ${
+                technician?.isAvailable
+                  ? "bg-green-500"
+                  : "bg-gray-400"
+              }`}
+            ></div>
 
           </div>
 
@@ -365,37 +412,10 @@ function TechnicianDashboard() {
               </h2>
 
               <h1 className="text-5xl font-bold text-blue-700">
-                $480
+                ${technician?.hourlyRate || 0}
               </h1>
 
             </div>
-
-          </div>
-
-        </div>
-
-
-        {/* NOTIFICATIONS */}
-
-        <div className="bg-white rounded-3xl shadow-md p-8 mt-8">
-
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Recent Notifications
-          </h2>
-
-          <div className="space-y-5 text-gray-600">
-
-            <p>
-              • New emergency request near your location
-            </p>
-
-            <p>
-              • Request accepted: Network Setup
-            </p>
-
-            <p>
-              • Payment received for completed service
-            </p>
 
           </div>
 
@@ -405,8 +425,8 @@ function TechnicianDashboard() {
 
     </main>
 
-  )
+  );
 
 }
 
-export default TechnicianDashboard
+export default TechnicianDashboard;

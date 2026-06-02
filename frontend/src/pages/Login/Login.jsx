@@ -41,6 +41,9 @@ else if (response.data.role === "BusinessOwner") {
   navigate("/business-dashboard");
 
 }
+else if (response.data.role === "Admin") {
+  navigate("/admin-dashboard");
+}
 
   } catch (error) {
 
@@ -184,7 +187,9 @@ onChange={(e) => setPassword(e.target.value)}
 
           <p className="text-gray-600 mt-8 text-center">
             Don’t have an account?
-            <span className="text-blue-600 font-semibold cursor-pointer hover:underline ml-2">
+            <span 
+            onClick={() => navigate("/sign-up")}
+            className="text-blue-600 font-semibold cursor-pointer hover:underline ml-2">
               Create Account
             </span>
           </p>
