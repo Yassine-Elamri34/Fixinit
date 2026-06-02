@@ -98,6 +98,13 @@ namespace Fixinit.net.Controllers
 
             return Ok(schedules);
         }
+        [HttpGet("all")]
+        public IActionResult GetAllTechnicians()
+        {
+            var technicians = _context.Technicians.ToList();
+
+            return Ok(technicians);
+        }
 
         [HttpPost("upload-picture")]
         public async Task<IActionResult> UploadPicture(
