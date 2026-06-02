@@ -11,9 +11,37 @@ import {
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+
 
 function BusinessDashboard() {
+const userId = 1;
 
+const [business, setBusiness] = useState(null);
+const fetchBusinessProfile = async () => {
+
+  try {
+
+    const response = await axios.get(
+      `https://localhost:7294/api/BusinessOwner/profile/${userId}`
+    );
+
+    setBusiness(response.data);
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+};
+useEffect(() => {
+
+  fetchBusinessProfile();
+
+}, []);
   const navigate = useNavigate();
 
   return (
@@ -55,20 +83,26 @@ function BusinessDashboard() {
               <p>My Requests</p>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
-              <Users />
-              <p>Technicians</p>
-            </div>
+            <div
+  onClick={() => navigate("/technician")}
+  className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition"
+>
+  <Users />
+  <p>Technicians</p>
+</div>
 
             <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <AlertTriangle />
               <p>Emergency Help</p>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
-              <User />
-              <p>Profile</p>
-            </div>
+           <div
+  onClick={() => navigate("/business-profile")}
+  className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition"
+>
+  <User />
+  <p>Profile</p>
+</div>
 
           </div>
 
@@ -78,7 +112,7 @@ function BusinessDashboard() {
         {/* LOGOUT */}
 
         <div
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/login")}
           className="flex items-center gap-4 text-red-500 p-4 rounded-2xl hover:bg-red-50 cursor-pointer transition"
         >
           <LogOut />
@@ -109,12 +143,44 @@ function BusinessDashboard() {
           </p>
 
           <h2 className="text-4xl font-bold text-black mt-2">
-            Burger House Restaurant
-          </h2>
+  {business?.businessName || "Business Name"}
+</h2>
 
-          <p className="text-gray-600 mt-3">
-            Manage your IT requests and connect with local technicians.
-          </p>
+         <p className="text-gray-600 mt-3">
+  {business?.description || "No description available"}
+</p>
+<div className="mt-5 space-y-2">
+
+  <p>
+    <span className="font-semibold">
+      Contact:
+    </span>{" "}
+    {business?.contactPersonFirstName}{" "}
+    {business?.contactPersonLastName}
+  </p>
+
+  <p>
+    <span className="font-semibold">
+      Phone:
+    </span>{" "}
+    {business?.phoneNumber}
+  </p>
+
+  <p>
+    <span className="font-semibold">
+      Location:
+    </span>{" "}
+    {business?.city}, {business?.region}
+  </p>
+
+  <p>
+    <span className="font-semibold">
+      Business Type:
+    </span>{" "}
+    {business?.businessType}
+  </p>
+
+</div>
 
         </div>
 

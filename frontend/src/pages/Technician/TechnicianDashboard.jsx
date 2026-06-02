@@ -17,34 +17,54 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function TechnicianDashboard() {
-
+ const technicianId = 1;
+const [requests, setRequests] = useState([]);
   const navigate = useNavigate();
 
   const [technician, setTechnician] = useState(null);
+const fetchRequests = async () => {
+  try {
+    const response = await axios.get(
+      `https://localhost:7294/api/Request/technician/${technicianId}`
+    );
 
-  useEffect(() => {
+    setRequests(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-    const fetchTechnician = async () => {
+const acceptRequest = async (requestId) => {
+  await axios.put(
+    `https://localhost:7294/api/Request/accept/${requestId}`
+  );
 
-      try {
+  fetchRequests();
+};
 
-        const response = await axios.get(
-          "https://localhost:7294/api/Technician/profile/1"
-        );
+const declineRequest = async (requestId) => {
+  await axios.put(
+    `https://localhost:7294/api/Request/decline/${requestId}`
+  );
 
-        setTechnician(response.data);
+  fetchRequests();
+};
+ useEffect(() => {
+  const fetchTechnician = async () => {
+    try {
+      const response = await axios.get(
+        "https://localhost:7294/api/Technician/profile/1"
+      );
 
-      } catch (error) {
+      setTechnician(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-        console.log(error);
-
-      }
-
-    };
-
-    fetchTechnician();
-
-  }, []);
+  fetchTechnician();
+  fetchRequests();
+}, []);
 
 
   return (
@@ -83,7 +103,7 @@ function TechnicianDashboard() {
 
             <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <ClipboardList />
-              <p>Requests</p>
+              <p>Available Requests</p>
             </div>
 
            <div
@@ -110,7 +130,7 @@ function TechnicianDashboard() {
         {/* LOGOUT */}
 
         <div
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/login")}
           className="flex items-center gap-4 text-red-500 p-4 rounded-2xl hover:bg-red-50 cursor-pointer transition"
         >
           <LogOut />
@@ -232,131 +252,108 @@ function TechnicianDashboard() {
 
         {/* MIDDLE SECTION */}
 
-        <div className="grid grid-cols-3 gap-8">
+             {/* MIDDLE SECTION */}
 
+<div className="grid grid-cols-3 gap-8">
 
-          {/* ACTIVE REQUESTS */}
+  {/* ACTIVE REQUESTS */}
 
-          <div className="col-span-2 bg-white rounded-3xl shadow-md p-8">
+  <div className="col-span-2 bg-white rounded-3xl shadow-md p-8">
 
-            <div className="flex items-center justify-between mb-8">
+    <div className="flex items-center justify-between mb-8">
 
-              <h2 className="text-2xl font-bold text-gray-900">
-                Active Requests
-              </h2>
+      <h2 className="text-2xl font-bold text-gray-900">
+        Active Requests
+      </h2>
 
-              <p className="text-blue-600 cursor-pointer">
-                View all
+      <p className="text-blue-600 cursor-pointer">
+        View all
+      </p>
+
+    </div>
+
+    {requests.length === 0 ? (
+
+      <p className="text-gray-500">
+        No available requests yet.
+      </p>
+
+    ) : (
+
+      requests.map((request) => (
+
+        <div
+          key={request.requestId}
+          className="flex items-center justify-between border-b pb-6 mb-6"
+        >
+
+          <div className="flex items-center gap-5">
+
+            <div className="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center">
+              <Monitor />
+            </div>
+
+            <div>
+
+              <h3 className="font-bold text-lg">
+                {request.title}
+              </h3>
+
+              <p className="text-gray-500">
+                {request.description}
+              </p>
+
+              <p className="text-sm mt-1 font-semibold">
+                Status: {request.status}
               </p>
 
             </div>
 
-
-            {/* REQUEST 1 */}
-
-            <div className="flex items-center justify-between border-b pb-6 mb-6">
-
-              <div className="flex items-center gap-5">
-
-                <div className="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center">
-                  <Monitor />
-                </div>
-
-                <div>
-
-                  <h3 className="font-bold text-lg">
-                    POS System Down
-                  </h3>
-
-                  <p className="text-gray-500">
-                    Pizza Place Restaurant
-                  </p>
-
-                  <p className="text-gray-400 text-sm mt-1">
-                    Toronto, ON
-                  </p>
-
-                </div>
-
-              </div>
-
-              <button className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
-                Accept
-              </button>
-
-            </div>
-
-
-            {/* REQUEST 2 */}
-
-            <div className="flex items-center justify-between border-b pb-6 mb-6">
-
-              <div className="flex items-center gap-5">
-
-                <div className="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center">
-                  <Wifi />
-                </div>
-
-                <div>
-
-                  <h3 className="font-bold text-lg">
-                    Network Setup
-                  </h3>
-
-                  <p className="text-gray-500">
-                    Central Hotel
-                  </p>
-
-                  <p className="text-gray-400 text-sm mt-1">
-                    Toronto, ON
-                  </p>
-
-                </div>
-
-              </div>
-
-              <button className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
-                Accept
-              </button>
-
-            </div>
-
-
-            {/* REQUEST 3 */}
-
-            <div className="flex items-center justify-between">
-
-              <div className="flex items-center gap-5">
-
-                <div className="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center">
-                  <Printer />
-                </div>
-
-                <div>
-
-                  <h3 className="font-bold text-lg">
-                    Printer Issue
-                  </h3>
-
-                  <p className="text-gray-500">
-                    Office Hub
-                  </p>
-
-                  <p className="text-gray-400 text-sm mt-1">
-                    Toronto, ON
-                  </p>
-
-                </div>
-
-              </div>
-
-              <button className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
-                Accept
-              </button>
-
-            </div>
-
           </div>
+
+          {request.status === "Pending" ? (
+
+            <div className="flex gap-3">
+
+              <button
+                onClick={() =>
+                  acceptRequest(request.requestId)
+                }
+                className="px-5 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700"
+              >
+                Accept
+              </button>
+
+              <button
+                onClick={() =>
+                  declineRequest(request.requestId)
+                }
+                className="px-5 py-3 bg-red-500 text-white rounded-xl hover:bg-red-600"
+              >
+                Decline
+              </button>
+
+            </div>
+
+          ) : (
+
+            <span className="px-5 py-3 bg-gray-100 text-gray-700 rounded-xl">
+              {request.status}
+            </span>
+
+          )}
+
+        </div>
+
+      ))
+
+    )}
+
+  </div>
+
+  {/* RIGHT SECTION */}
+
+  <div className="space-y-8"></div>
 
 
           {/* RIGHT SECTION */}
@@ -364,58 +361,10 @@ function TechnicianDashboard() {
           <div className="space-y-8">
 
 
-            {/* SCHEDULE */}
-
-            <div className="bg-white rounded-3xl shadow-md p-8">
-
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Today's Schedule
-              </h2>
-
-              <div className="space-y-6">
-
-                <div>
-
-                  <p className="font-bold">
-                    10:00 AM
-                  </p>
-
-                  <p className="text-gray-600 mt-1">
-                    Restaurant POS Installation
-                  </p>
-
-                </div>
-
-                <div>
-
-                  <p className="font-bold">
-                    01:00 PM
-                  </p>
-
-                  <p className="text-gray-600 mt-1">
-                    Network Setup
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
 
 
-            {/* EARNINGS */}
+           
 
-            <div className="bg-white rounded-3xl shadow-md p-8">
-
-              <h2 className="text-2xl font-bold text-gray-900 mb-5">
-                Earnings This Week
-              </h2>
-
-              <h1 className="text-5xl font-bold text-blue-700">
-                ${technician?.hourlyRate || 0}
-              </h1>
-
-            </div>
 
           </div>
 
