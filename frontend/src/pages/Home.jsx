@@ -263,7 +263,7 @@ function Home() {
 
             <p className="text-xl text-gray-600 mb-10">
               Whether you need IT support or want to offer your
-              services as a technician, Fixinit makes it simple.
+              services as a technician, Fixinit makes it simple
             </p>
 
             <div className="flex justify-center gap-4 flex-wrap">
