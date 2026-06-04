@@ -70,7 +70,7 @@ useEffect(() => {
 
       {/* SIDEBAR */}
 
-      <aside className="w-72 bg-white border-r border-gray-300 p-8 flex flex-col justify-between">
+      <aside className="w-72 h-screen bg-white shadow-lg p-8 flex flex-col justify-between sticky top-0">
 
         <div>
 

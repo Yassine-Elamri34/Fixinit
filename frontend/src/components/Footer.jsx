@@ -236,7 +236,7 @@ function Footer() {
 
       <div className="border-t border-gray-700 mt-14 pt-8 text-center text-gray-400">
 
-        © 2026 ITConnect. All rights reserved.
+        © 2026 Fixinit. All rights reserved.
 
       </div>
 
