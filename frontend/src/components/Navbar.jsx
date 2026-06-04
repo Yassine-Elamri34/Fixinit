@@ -53,7 +53,7 @@ function Navbar() {
 </Link>
         </li>
          <li className="cursor-pointer hover:text-blue-600 hover:scale-105 transition">
-<Link to="/">
+<Link to="/how-it-works">
           How It works
 </Link>
         </li>
