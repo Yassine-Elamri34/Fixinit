@@ -153,13 +153,7 @@ const declineRequest = async (requestId) => {
             Technician Dashboard
           </h1>
 
-          <div className="flex items-center gap-5">
-
-            <Bell className="w-7 h-7 text-gray-700 cursor-pointer" />
-
-            <div className="w-14 h-14 rounded-full bg-gray-300"></div>
-
-          </div>
+         
 
         </div>
 
