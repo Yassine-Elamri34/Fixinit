@@ -48,15 +48,20 @@ function Navbar() {
         </li> */}
 
         <li className="cursor-pointer hover:text-blue-600 hover:scale-105 transition">
-
-          Services
-
+<Link to="/">
+          Home
+</Link>
+        </li>
+         <li className="cursor-pointer hover:text-blue-600 hover:scale-105 transition">
+<Link to="/">
+          How It works
+</Link>
         </li>
 
-        <li className="cursor-pointer hover:text-blue-600 hover:scale-105  transition">
-
-          Technicians
-
+       <li className="cursor-pointer hover:text-blue-600 hover:scale-105 transition">
+<Link to="/">
+          About Us
+</Link>
         </li>
 
         <li className="cursor-pointer hover:text-blue-600 hover:scale-105 transition">
