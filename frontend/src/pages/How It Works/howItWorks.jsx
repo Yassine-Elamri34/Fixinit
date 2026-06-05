@@ -200,7 +200,7 @@ function HowItWorks() {
               </h3>
 
               <p className="text-gray-500 mt-3">
-                Manage requests from your technician dashboard.
+                Manage requests from your technician dashboard
               </p>
 
             </div>
