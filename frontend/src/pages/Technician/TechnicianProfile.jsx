@@ -47,6 +47,11 @@ const [lastName, setLastName] = useState("");
 setLastName(response.data.lastName || "");
       setProfilePicture(response.data.profilePicture || "");
       setDescription(response.data.description || "");
+      setSkills(
+  response.data.skills
+    ? response.data.skills.split(",")
+    : []
+);
       setHourlyRate(response.data.hourlyRate || "");
       setCity(response.data.city || "");
       setRegion(response.data.region || "");
@@ -70,7 +75,7 @@ const updateProfile = async () => {
 
     const response = await axios.post(
       "https://localhost:7294/api/Technician/update-profile",
-      {
+   {
   userId,
   firstName,
   lastName,
@@ -79,6 +84,7 @@ const updateProfile = async () => {
   city,
   region,
   isAvailable,
+  skills: skills.join(","),
 }
     );
 
@@ -311,12 +317,12 @@ const updateProfile = async () => {
   </div>
 
   <button
-    type="button"
-    onClick={() => alert("Skills updated")}
-    className="mt-6 bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
-  >
-    Save Skills
-  </button>
+  type="button"
+  onClick={updateProfile}
+  className="mt-6 bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
+>
+  Save Skills
+</button>
 
 </div>
 
