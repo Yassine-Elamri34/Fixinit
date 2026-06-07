@@ -6,6 +6,21 @@ import { useNavigate } from "react-router-dom";
 
 
 function TechnicianProfile() {
+  const [skills, setSkills] = useState([]);
+  const availableSkills = [
+  "Windows Support",
+  "Network Setup",
+  "Wi-Fi Troubleshooting",
+  "Printer Support",
+  "POS System Support",
+  "Microsoft 365",
+  "Hardware Repair",
+  "Software Installation",
+  "Antivirus & Security",
+  "Data Backup & Recovery",
+  "Remote Support",
+  "On-Site Support",
+];
  const [firstName, setFirstName] = useState("");
 const [lastName, setLastName] = useState("");
   const navigate = useNavigate();
@@ -247,6 +262,63 @@ const updateProfile = async () => {
           </div>
 
         </div>
+        <div className="bg-white rounded-3xl shadow-md p-8 mt-8">
+
+  <h2 className="text-2xl font-bold text-gray-900 mb-6">
+    Technical Skills
+  </h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+    {availableSkills.map((skill) => (
+
+      <label
+        key={skill}
+        className="flex items-center gap-3 border border-gray-200 rounded-xl p-3 cursor-pointer hover:border-blue-500"
+      >
+
+        <input
+          type="checkbox"
+          checked={skills.includes(skill)}
+          onChange={(e) => {
+
+            if (e.target.checked) {
+
+              setSkills([
+                ...skills,
+                skill
+              ]);
+
+            } else {
+
+              setSkills(
+                skills.filter(
+                  (s) => s !== skill
+                )
+              );
+
+            }
+
+          }}
+        />
+
+        <span>{skill}</span>
+
+      </label>
+
+    ))}
+
+  </div>
+
+  <button
+    type="button"
+    onClick={() => alert("Skills updated")}
+    className="mt-6 bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
+  >
+    Save Skills
+  </button>
+
+</div>
 
         
 
