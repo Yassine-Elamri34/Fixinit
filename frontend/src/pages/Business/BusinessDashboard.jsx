@@ -56,6 +56,25 @@ const fetchBusinessProfile = async () => {
   }
 
 };
+const approveCompletion = async (requestId) => {
+
+  try {
+
+    await axios.put(
+      `https://localhost:7294/api/Request/approve-completion/${requestId}`
+    );
+
+    fetchRequests();
+
+    alert("Request approved");
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+};
 useEffect(() => {
 
   fetchBusinessProfile();
@@ -229,30 +248,74 @@ useEffect(() => {
         <p className="text-gray-500">
           {request.description}
         </p>
+        <div className="mt-2">
 
-        <p className="mt-2">
+  <span className="font-semibold">
+    Status:
+  </span>
 
-          Status:
+  {request.completionStatus === "Approved" ? (
 
-          {request.status === "Pending" && (
-            <span className="text-yellow-600 font-bold">
-              {" "}Pending
-            </span>
-          )}
+    <span className="text-green-700 font-bold">
+      {" "}Approved ✅
+    </span>
 
-          {request.status === "Accepted" && (
-            <span className="text-green-600 font-bold">
-              {" "}Accepted
-            </span>
-          )}
+  ) : request.completionStatus === "Pending Approval" ? (
 
-          {request.status === "Declined" && (
-            <span className="text-red-600 font-bold">
-              {" "}Declined
-            </span>
-          )}
+    <span className="text-yellow-600 font-bold">
+      {" "}Pending Business Approval
+    </span>
 
-        </p>
+  ) : request.status === "Accepted" ? (
+
+    <span className="text-green-600 font-bold">
+      {" "}Accepted
+    </span>
+
+  ) : request.status === "Pending" ? (
+
+    <span className="text-yellow-600 font-bold">
+      {" "}Pending
+    </span>
+
+  ) : (
+
+    <span className="text-red-600 font-bold">
+      {" "}Declined
+    </span>
+
+  )}
+
+</div>
+{request.completionStatus === "Pending Approval" && (
+
+  <div className="mt-4 bg-yellow-50 border border-yellow-200 rounded-2xl p-4">
+
+    <p className="font-semibold text-gray-800">
+      Technician Completion Notes
+    </p>
+
+    <p className="text-gray-600 mt-2">
+      {request.completionNotes}
+    </p>
+
+    <p className="mt-4 font-semibold">
+      Did the technician come and fix your issue?
+    </p>
+
+    <button
+      onClick={() =>
+        approveCompletion(request.requestId)
+      }
+      className="mt-3 bg-green-600 text-white px-5 py-2 rounded-xl hover:bg-green-700"
+    >
+      Approve Completion
+    </button>
+
+  </div>
+
+)}
+       
 
       </div>
 

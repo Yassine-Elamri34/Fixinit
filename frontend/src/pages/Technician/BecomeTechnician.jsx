@@ -7,13 +7,47 @@ import {
   Wrench,
   Shield,
 } from "lucide-react";
-
+import TechnicianVideo from "../../assets/technician-video.mp4";
 function BecomeTechnician() {
   const navigate = useNavigate();
 
   return (
     <main className="min-h-screen bg-gray-50">
+{/* VIDEO BANNER */}
 
+<div className="relative h-90  overflow-hidden mb-8">
+
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-full object-cover"
+  >
+    <source
+      src={TechnicianVideo}
+      type="video/mp4"
+    />
+  </video>
+
+  <div className="absolute inset-0 bg-black/40 flex items-center px-10">
+
+    <div className="text-white">
+
+      <h2 className="text-4xl font-bold">
+        Manage Your IT Requests
+      </h2>
+
+      <p className="text-lg mt-3 max-w-2xl">
+        Review incoming support requests, accept jobs,
+        update progress, and keep businesses informed.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
       {/* HERO */}
 
       <section className="bg-gradient-to-r from-[#041B4D] to-blue-700 text-white py-24">
