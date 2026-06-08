@@ -15,7 +15,7 @@ function BecomeTechnician() {
     <main className="min-h-screen bg-gray-50">
 {/* VIDEO BANNER */}
 
-<div className="relative h-90  overflow-hidden mb-8">
+<div className="relative h-90  overflow-hidden ">
 
   <video
     autoPlay
@@ -48,7 +48,7 @@ function BecomeTechnician() {
   </div>
 
 </div>
-      {/* HERO */}
+      {/* HERO
 
       <section className="bg-gradient-to-r from-[#041B4D] to-blue-700 text-white py-24">
 
@@ -73,7 +73,7 @@ function BecomeTechnician() {
 
         </div>
 
-      </section>
+      </section> */}
 
       {/* BENEFITS */}
 

@@ -7,15 +7,50 @@ import {
   Briefcase,
   CheckCircle,
 } from "lucide-react";
-
+import SupportVideo from "../../assets/get-support-video.mp4";
 function GetItSupport() {
   const navigate = useNavigate();
 
   return (
     <main className="bg-gray-50">
+{/* VIDEO BANNER */}
 
+<div className="relative h-[350px] overflow-hidden">
+
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-full object-cover"
+  >
+    <source
+      src={SupportVideo}
+      type="video/mp4"
+    />
+  </video>
+
+  <div className="absolute inset-0 bg-black/40 flex items-center px-10">
+
+    <div className="text-white">
+
+      <h2 className="text-5xl font-bold">
+        Find Local IT Support
+      </h2>
+
+      <p className="text-lg mt-3 max-w-2xl">
+        Connect with trusted technicians for computer repairs,
+        network issues, POS support, software installation,
+        and emergency IT assistance.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
       {/* HERO */}
-
+{/* 
       <section className="bg-gradient-to-r from-[#041B4D] to-blue-700 text-white py-24">
 
         <div className="max-w-7xl mx-auto px-8 text-center">
@@ -39,7 +74,7 @@ function GetItSupport() {
 
         </div>
 
-      </section>
+      </section> */}
 
       {/* BENEFITS */}
 
