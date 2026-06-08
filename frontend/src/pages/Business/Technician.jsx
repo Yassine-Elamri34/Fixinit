@@ -115,6 +115,34 @@ const createRequest = async () => {
               <p className="text-sm text-gray-600 mt-3">
                 {technician.description}
               </p>
+              {technician.skills && (
+
+  <div className="mt-4">
+
+    <p className="text-sm font-semibold text-gray-700 mb-2">
+      Skills
+    </p>
+
+    <div className="flex flex-wrap gap-2">
+
+      {technician.skills
+        .split(",")
+        .map((skill, index) => (
+
+          <span
+            key={index}
+            className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium"
+          >
+            {skill}
+          </span>
+
+        ))}
+
+    </div>
+
+  </div>
+
+)}
 {
   submittedRequests.includes(
     technician.technicianId
