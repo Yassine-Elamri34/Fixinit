@@ -19,7 +19,7 @@ import axios from "axios";
 function TechnicianDashboard() {
  const technicianId = 1;
 const [requests, setRequests] = useState([]);
-const [completionNotes, setCompletionNotes] = useState("");
+const [completionNotes, setCompletionNotes] = useState({});
   const navigate = useNavigate();
 
   const [technician, setTechnician] = useState(null);
@@ -30,10 +30,10 @@ const [completionNotes, setCompletionNotes] = useState("");
     await axios.put(
       "https://localhost:7294/api/Request/update-completion",
       {
-        requestId,
-        completionStatus: "Completed",
-        completionNotes
-      }
+  requestId,
+  completionStatus: "Pending Approval",
+  completionNotes: completionNotes[requestId]
+}
     );
 
     fetchRequests();
@@ -322,14 +322,18 @@ const declineRequest = async (requestId) => {
   <div className="flex flex-col items-end gap-3">
 
     <span
-      className={`px-5 py-3 rounded-xl font-semibold ${
-        request.status === "Accepted"
-          ? "bg-green-100 text-green-700"
-          : "bg-red-100 text-red-700"
-      }`}
-    >
-      {request.status}
-    </span>
+  className={`px-5 py-3 rounded-xl font-semibold ${
+    request.completionStatus === "Pending Approval"
+      ? "bg-yellow-100 text-yellow-700"
+      : request.status === "Accepted"
+      ? "bg-green-100 text-green-700"
+      : "bg-red-100 text-red-700"
+  }`}
+>
+  {request.completionStatus === "Pending Approval"
+    ? "⏳ Pending Approval"
+    : request.status}
+</span>
 
     {request.status === "Accepted" && (
 
@@ -340,10 +344,13 @@ const declineRequest = async (requestId) => {
         </p>
 
         <textarea
-          value={completionNotes}
+          value={completionNotes[request.requestId] || ""}
           onChange={(e) =>
-            setCompletionNotes(e.target.value)
-          }
+  setCompletionNotes({
+    ...completionNotes,
+    [request.requestId]: e.target.value,
+  })
+}
           placeholder="Describe the work completed..."
           className="w-full border rounded-xl p-3 mb-3 text-sm"
         />

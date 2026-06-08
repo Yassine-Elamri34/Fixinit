@@ -7,13 +7,47 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+import FixinitVideo from "../assets/fixinit-video.mp4";
 function Home() {
   const navigate = useNavigate();
 
   return (
     <main className="bg-gray-50">
+{/* VIDEO HERO */}
 
+<section className="relative h-[350px] overflow-hidden">
+
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-full object-cover"
+  >
+    <source
+      src={FixinitVideo}
+      type="video/mp4"
+    />
+  </video>
+
+  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+
+    <div className="text-center text-white px-6">
+
+      <h1 className="text-6xl font-bold mb-4">
+        Fast Local IT Support
+      </h1>
+
+      <p className="text-xl max-w-3xl">
+        Connect with trusted technicians for on-site,
+        emergency, and business IT support
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
       {/* HERO */}
 
       <section className="max-w-7xl mx-auto px-8 py-20">
