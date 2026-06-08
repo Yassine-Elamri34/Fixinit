@@ -14,7 +14,15 @@ const [title, setTitle] = useState("");
 const [description, setDescription] = useState("");
   const [technicians, setTechnicians] = useState([]);
 const createRequest = async () => {
+  if (!title.trim()) {
+    alert("Request Title is required");
+    return;
+  }
 
+  if (!description.trim()) {
+    alert("Problem Description is required");
+    return;
+  }
   try {
 
     await axios.post(
@@ -181,7 +189,7 @@ const createRequest = async () => {
       </div>
 {showRequestForm && (
 
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+  <div className="fixed inset-0 bg-gray-100 bg-opacity-50 flex items-center justify-center">
 
     <div className="bg-white p-8 rounded-3xl w-full max-w-lg">
 

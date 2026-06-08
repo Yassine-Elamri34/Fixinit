@@ -19,9 +19,34 @@ import axios from "axios";
 function TechnicianDashboard() {
  const technicianId = 1;
 const [requests, setRequests] = useState([]);
+const [completionNotes, setCompletionNotes] = useState("");
   const navigate = useNavigate();
 
   const [technician, setTechnician] = useState(null);
+  const markCompleted = async (requestId) => {
+
+  try {
+
+    await axios.put(
+      "https://localhost:7294/api/Request/update-completion",
+      {
+        requestId,
+        completionStatus: "Completed",
+        completionNotes
+      }
+    );
+
+    fetchRequests();
+
+    alert("Request marked completed");
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+};
 const fetchRequests = async () => {
   try {
     const response = await axios.get(
@@ -292,13 +317,53 @@ const declineRequest = async (requestId) => {
 
             </div>
 
-          ) : (
+         ) : (
 
-            <span className="px-5 py-3 bg-gray-100 text-gray-700 rounded-xl">
-              {request.status}
-            </span>
+  <div className="flex flex-col items-end gap-3">
 
-          )}
+    <span
+      className={`px-5 py-3 rounded-xl font-semibold ${
+        request.status === "Accepted"
+          ? "bg-green-100 text-green-700"
+          : "bg-red-100 text-red-700"
+      }`}
+    >
+      {request.status}
+    </span>
+
+    {request.status === "Accepted" && (
+
+      <div className="w-72 bg-gray-50 border border-gray-200 rounded-2xl p-4">
+
+        <p className="font-semibold mb-2 text-gray-800">
+          Did you finish this task?
+        </p>
+
+        <textarea
+          value={completionNotes}
+          onChange={(e) =>
+            setCompletionNotes(e.target.value)
+          }
+          placeholder="Describe the work completed..."
+          className="w-full border rounded-xl p-3 mb-3 text-sm"
+        />
+
+        <button
+          onClick={() =>
+            markCompleted(request.requestId)
+          }
+          className="w-full bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700"
+        >
+          Mark Completed
+        </button>
+
+      </div>
+
+    )}
+
+  </div>
+
+)}
 
         </div>
 
