@@ -17,13 +17,13 @@ function GetItSupport() {
 
 <div className="relative h-[350px] overflow-hidden">
 
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="w-full h-full object-cover"
-  >
+<video
+  autoPlay
+  muted
+  playsInline
+  preload="auto"
+  className="w-full h-full object-cover"
+>
     <source
       src={SupportVideo}
       type="video/mp4"
