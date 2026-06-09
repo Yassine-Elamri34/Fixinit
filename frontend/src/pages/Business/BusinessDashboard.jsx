@@ -234,7 +234,9 @@ useEffect(() => {
 
   ) : (
 
-    requests.map((request) => (
+    [...requests]
+  .sort((a, b) => b.requestId - a.requestId)
+  .map((request) => (
 
       <div
         key={request.requestId}
