@@ -1,4 +1,4 @@
-import { ShieldCheck, Wrench, MapPin, Menu } from 'lucide-react'
+import { ShieldCheck, Wrench, Menu , Monitor, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 function Navbar() {
@@ -11,8 +11,8 @@ function Navbar() {
 
      <div className="flex items-center gap-3 cursor-pointer">
 
-  <Wrench className="text-blue-600 w-10 h-10" />
-
+  
+<MapPin className="text-blue-600 w-10 h-10" />
 
 
   <div>
