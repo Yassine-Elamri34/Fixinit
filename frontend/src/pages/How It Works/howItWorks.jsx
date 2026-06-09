@@ -42,7 +42,7 @@ function HowItWorks() {
 
           <Briefcase
             size={60}
-            className="mx-auto text-blue-600 mb-4"
+            className="mx-auto text-green-600 mb-4"
           />
 
           <h2 className="text-4xl font-bold text-[#041B4D]">
@@ -55,7 +55,7 @@ function HowItWorks() {
 
           <div className="bg-white rounded-3xl p-8 shadow-md text-center">
 
-            <UserPlus className="mx-auto text-blue-600 mb-4" size={40} />
+            <UserPlus className="mx-auto text-green-600 mb-4" size={40} />
 
             <h3 className="font-bold text-xl">
               Create an Account
@@ -69,7 +69,7 @@ function HowItWorks() {
 
           <div className="bg-white rounded-3xl p-8 shadow-md text-center">
 
-            <Search className="mx-auto text-blue-600 mb-4" size={40} />
+            <Search className="mx-auto text-green-600 mb-4" size={40} />
 
             <h3 className="font-bold text-xl">
               Find a Technician
@@ -83,7 +83,7 @@ function HowItWorks() {
 
           <div className="bg-white rounded-3xl p-8 shadow-md text-center">
 
-            <Send className="mx-auto text-blue-600 mb-4" size={40} />
+            <Send className="mx-auto text-green-600 mb-4" size={40} />
 
             <h3 className="font-bold text-xl">
               Submit a Request
@@ -126,7 +126,7 @@ function HowItWorks() {
 
             <Wrench
               size={60}
-              className="mx-auto text-green-600 mb-4"
+              className="mx-auto text-blue-600 mb-4"
             />
 
             <h2 className="text-4xl font-bold text-[#041B4D]">
@@ -140,7 +140,7 @@ function HowItWorks() {
             <div className="bg-gray-50 rounded-3xl p-8 text-center">
 
               <UserPlus
-                className="mx-auto text-green-600 mb-4"
+                className="mx-auto text-blue-600 mb-4"
                 size={40}
               />
 
@@ -157,7 +157,7 @@ function HowItWorks() {
             <div className="bg-gray-50 rounded-3xl p-8 text-center">
 
               <Wrench
-                className="mx-auto text-green-600 mb-4"
+                className="mx-auto text-blue-600 mb-4"
                 size={40}
               />
 
@@ -174,7 +174,7 @@ function HowItWorks() {
             <div className="bg-gray-50 rounded-3xl p-8 text-center">
 
               <Send
-                className="mx-auto text-green-600 mb-4"
+                className="mx-auto text-blue-600 mb-4"
                 size={40}
               />
 
@@ -191,7 +191,7 @@ function HowItWorks() {
             <div className="bg-gray-50 rounded-3xl p-8 text-center">
 
               <CheckCircle
-                className="mx-auto text-green-600 mb-4"
+                className="mx-auto text-blue-600 mb-4"
                 size={40}
               />
 
