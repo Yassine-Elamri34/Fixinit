@@ -321,21 +321,27 @@ const declineRequest = async (requestId) => {
 
   <div className="flex flex-col items-end gap-3">
 
-    <span
+   <span
   className={`px-5 py-3 rounded-xl font-semibold ${
-    request.completionStatus === "Pending Approval"
+    request.completionStatus === "Approved"
+      ? "bg-green-100 text-green-700"
+      : request.completionStatus === "Pending Approval"
       ? "bg-yellow-100 text-yellow-700"
       : request.status === "Accepted"
       ? "bg-green-100 text-green-700"
       : "bg-red-100 text-red-700"
   }`}
 >
-  {request.completionStatus === "Pending Approval"
+  {request.completionStatus === "Approved"
+    ? "✅ Approved"
+    : request.completionStatus === "Pending Approval"
     ? "⏳ Pending Approval"
     : request.status}
 </span>
 
-    {request.status === "Accepted" && (
+    {request.status === "Accepted" &&
+ request.completionStatus !== "Pending Approval" &&
+ request.completionStatus !== "Approved" && (
 
       <div className="w-72 bg-gray-50 border border-gray-200 rounded-2xl p-4">
 
