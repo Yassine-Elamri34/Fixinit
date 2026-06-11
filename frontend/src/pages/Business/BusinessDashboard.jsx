@@ -17,9 +17,13 @@ import axios from "axios";
 
 
 function BusinessDashboard() {
+
+
+const [ratings, setRatings] = useState({});
+const [comments, setComments] = useState({});
+const [reviewedRequests, setReviewedRequests] = useState([]);
 const userId = 1;
 const businessOwnerId = 1;
-
 const [requests, setRequests] = useState([]);
 const [business, setBusiness] = useState(null);
 const fetchRequests = async () => {
