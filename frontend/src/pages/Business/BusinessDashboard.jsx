@@ -18,7 +18,7 @@ import axios from "axios";
 
 function BusinessDashboard() {
 
-
+const [existingReviews, setExistingReviews] = useState([]);
 const [ratings, setRatings] = useState({});
 const [comments, setComments] = useState({});
 const [reviewedRequests, setReviewedRequests] = useState([]);
@@ -42,6 +42,21 @@ const fetchRequests = async () => {
 
   }
 
+};
+const fetchReviews = async () => {
+  try {
+
+    const response = await axios.get(
+      "https://localhost:7294/api/Review"
+    );
+
+    setExistingReviews(response.data);
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
 };
 const fetchBusinessProfile = async () => {
 
@@ -79,10 +94,42 @@ const approveCompletion = async (requestId) => {
   }
 
 };
+
+const submitReview = async (request) => {
+  try {
+    await axios.post(
+      "https://localhost:7294/api/Review/create",
+      {
+        requestId: request.requestId,
+        technicianId: request.technicianId,
+        businessOwnerId: businessOwnerId,
+        rating: ratings[request.requestId],
+        comment: comments[request.requestId] || ""
+      }
+    );
+
+    setReviewedRequests([
+      ...reviewedRequests,
+      request.requestId
+    ]);
+
+    alert("Review submitted");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+
+
+
+
 useEffect(() => {
 
   fetchBusinessProfile();
   fetchRequests();
+  fetchReviews();
 
 }, []);
   const navigate = useNavigate();
@@ -316,6 +363,66 @@ useEffect(() => {
       className="mt-3 bg-green-600 text-white px-5 py-2 rounded-xl hover:bg-green-700"
     >
       Approve Completion
+    </button>
+
+
+
+  </div>
+
+)}
+
+{request.completionStatus === "Approved" &&
+ !reviewedRequests.includes(request.requestId) && (
+
+  <div className="mt-4 bg-green-50 border border-green-200 rounded-2xl p-4">
+
+    <p className="font-semibold text-gray-800">
+      Leave a Review
+    </p>
+
+    <div className="flex gap-2 mt-3 text-3xl">
+
+      {[1, 2, 3, 4, 5].map((star) => (
+
+        <button
+          key={star}
+          type="button"
+          onClick={() =>
+            setRatings({
+              ...ratings,
+              [request.requestId]: star
+            })
+          }
+          className={
+            star <= (ratings[request.requestId] || 0)
+              ? "text-yellow-400"
+              : "text-gray-300"
+          }
+        >
+          ★
+        </button>
+
+      ))}
+
+    </div>
+
+    <textarea
+      placeholder="Leave feedback about the technician..."
+      value={comments[request.requestId] || ""}
+      onChange={(e) =>
+        setComments({
+          ...comments,
+          [request.requestId]: e.target.value
+        })
+      }
+      className="w-full border rounded-xl p-3 mt-3"
+    />
+
+    <button
+      onClick={() => submitReview(request)}
+      className="mt-3 bg-green-600 text-white px-5 py-2 rounded-xl hover:bg-green-700"
+    >
+      Submit Review
     </button>
 
   </div>
