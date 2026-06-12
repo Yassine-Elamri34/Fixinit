@@ -41,7 +41,7 @@ function GetItSupport() {
       <p className="text-lg mt-3 max-w-2xl">
         Connect with trusted technicians for computer repairs,
         network issues, POS support, software installation,
-        and emergency IT assistance.
+        and emergency IT assistance
       </p>
 
     </div>
