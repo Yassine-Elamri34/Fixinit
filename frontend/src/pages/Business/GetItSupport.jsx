@@ -99,7 +99,7 @@ function GetItSupport() {
 
             <p className="text-gray-600">
               Find skilled IT professionals ready to solve
-              your technical issues.
+              your technical issues
             </p>
 
           </div>
