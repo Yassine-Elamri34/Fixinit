@@ -26,29 +26,16 @@ const userId = 1;
 const businessOwnerId = 1;
 const [requests, setRequests] = useState([]);
 const [business, setBusiness] = useState(null);
-const fetchRequests = async () => {
 
-  try {
 
-    const response = await axios.get(
-      `https://localhost:7294/api/Request/business/${businessOwnerId}`
-    );
-
-    setRequests(response.data);
-
-  } catch (error) {
-
-    console.log(error);
-
-  }
-
-};
 const fetchReviews = async () => {
   try {
 
     const response = await axios.get(
       "https://localhost:7294/api/Review"
     );
+
+    console.log("Reviews:", response.data);
 
     setExistingReviews(response.data);
 
@@ -58,6 +45,13 @@ const fetchReviews = async () => {
 
   }
 };
+
+
+
+
+
+
+
 const fetchBusinessProfile = async () => {
 
   try {
@@ -94,6 +88,19 @@ const approveCompletion = async (requestId) => {
   }
 
 };
+const fetchRequests = async () => {
+  try {
+    const response = await axios.get(
+      `https://localhost:7294/api/Request/business/${businessOwnerId}`
+    );
+
+    setRequests(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 
 const submitReview = async (request) => {
   try {
@@ -108,12 +115,14 @@ const submitReview = async (request) => {
       }
     );
 
-    setReviewedRequests([
-      ...reviewedRequests,
-      request.requestId
-    ]);
+setReviewedRequests([
+  ...reviewedRequests,
+  request.requestId
+]);
 
-    alert("Review submitted");
+await fetchReviews();
+
+alert("Review submitted");
   } catch (error) {
     console.log(error);
   }
@@ -372,7 +381,11 @@ useEffect(() => {
 )}
 
 {request.completionStatus === "Approved" &&
- !reviewedRequests.includes(request.requestId) && (
+ !existingReviews.some(
+   (review) =>
+     review.requestId === request.requestId ||
+     review.RequestId === request.requestId
+ ) && (
 
   <div className="mt-4 bg-green-50 border border-green-200 rounded-2xl p-4">
 
