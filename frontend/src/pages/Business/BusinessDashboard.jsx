@@ -190,7 +190,9 @@ useEffect(() => {
   <p>Find Technicians</p>
 </div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
+            <div 
+            onClick={() => navigate("/emergency")}
+            className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <AlertTriangle />
               <p>Emergency Help</p>
             </div>

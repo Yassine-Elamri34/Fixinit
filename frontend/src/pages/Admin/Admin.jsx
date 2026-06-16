@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Users,
   Briefcase,
@@ -8,6 +10,90 @@ import {
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
+  const [technicians, setTechnicians] = useState([]);
+const [businesses, setBusinesses] = useState([]);
+const activateTechnician = async (id) => {
+  await axios.put(
+    `https://localhost:7294/api/Admin/technician/activate/${id}`
+  );
+
+  fetchTechnicians();
+};
+
+const blockTechnician = async (id) => {
+  await axios.put(
+    `https://localhost:7294/api/Admin/technician/block/${id}`
+  );
+
+  fetchTechnicians();
+};
+
+const deleteTechnician = async (id) => {
+  await axios.delete(
+    `https://localhost:7294/api/Admin/technician/${id}`
+  );
+
+  fetchTechnicians();
+};
+
+const suspendBusiness = async (id) => {
+  await axios.put(
+    `https://localhost:7294/api/Admin/business/suspend/${id}`
+  );
+
+  fetchBusinesses();
+};
+
+const activateBusiness = async (id) => {
+  await axios.put(
+    `https://localhost:7294/api/Admin/business/activate/${id}`
+  );
+
+  fetchBusinesses();
+};
+
+const blockBusiness = async (id) => {
+  await axios.put(
+    `https://localhost:7294/api/Admin/business/block/${id}`
+  );
+
+  fetchBusinesses();
+};
+
+const deleteBusiness = async (id) => {
+  await axios.delete(
+    `https://localhost:7294/api/Admin/business/${id}`
+  );
+
+  fetchBusinesses();
+};
+const fetchTechnicians = async () => {
+  const response = await axios.get(
+    "https://localhost:7294/api/Admin/technicians"
+  );
+
+  setTechnicians(response.data);
+};
+
+const fetchBusinesses = async () => {
+  const response = await axios.get(
+    "https://localhost:7294/api/Admin/businesses"
+  );
+
+  setBusinesses(response.data);
+};
+const suspendTechnician = async (id) => {
+  await axios.put(
+    `https://localhost:7294/api/Admin/technician/suspend/${id}`
+  );
+
+  fetchTechnicians();
+};
+useEffect(() => {
+  fetchTechnicians();
+  fetchBusinesses();
+}, []);
+
 
   return (
     <main className="min-h-screen bg-gray-100">
@@ -44,7 +130,7 @@ export default function AdminDashboard() {
             />
 
             <h2 className="text-4xl font-bold text-[#041B4D]">
-              0
+              {technicians.length}
             </h2>
 
             <p className="text-gray-500 mt-2">
@@ -61,7 +147,7 @@ export default function AdminDashboard() {
             />
 
             <h2 className="text-4xl font-bold text-blue-600">
-              0
+              {businesses.length}
             </h2>
 
             <p className="text-gray-500 mt-2">
@@ -154,7 +240,171 @@ export default function AdminDashboard() {
           </div>
 
         </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10">
+<div className="bg-white rounded-3xl shadow-md p-6">
 
+  <h2 className="text-3xl font-bold mb-6">
+    Technicians
+  </h2>
+
+  {technicians.map((tech) => (
+
+    <div
+      key={tech.technicianId}
+      className="border-b py-4 flex justify-between items-center"
+    >
+
+      <div>
+        <p className="font-bold">
+          {tech.firstName} {tech.lastName}
+        </p>
+
+        <p className="text-gray-500">
+          {tech.email}
+        </p>
+
+        <p className="text-sm">
+          {tech.city}, {tech.region}
+        </p>
+
+        <p>
+          Status: {tech.status}
+        </p>
+      </div>
+
+      <div className="flex gap-2">
+{tech.status === "Suspended" ? (
+  <button
+    onClick={() => activateTechnician(tech.technicianId)}
+    className="bg-green-600 text-white px-3 py-2 rounded"
+  >
+    Unsuspend
+  </button>
+) : (
+  <button
+    onClick={() => suspendTechnician(tech.technicianId)}
+    className="bg-yellow-500 text-white px-3 py-2 rounded"
+  >
+    Suspend
+  </button>
+)}
+
+{tech.status === "Blocked" ? (
+  <button
+    onClick={() => activateTechnician(tech.technicianId)}
+    className="bg-blue-600 text-white px-3 py-2 rounded"
+  >
+    Unblock
+  </button>
+) : (
+  <button
+    onClick={() => blockTechnician(tech.technicianId)}
+    className="bg-gray-800 text-white px-3 py-2 rounded"
+  >
+    Block
+  </button>
+)}
+
+<button
+  onClick={() => deleteTechnician(tech.technicianId)}
+  className="bg-red-600 text-white px-3 py-2 rounded"
+>
+  Delete
+</button>
+
+      </div>
+
+    </div>
+
+  ))}
+
+</div>
+
+
+
+
+<div className="bg-white rounded-3xl shadow-md p-6">
+
+  <h2 className="text-3xl font-bold mb-6 text-blue-600">
+    Business Owners
+  </h2>
+
+  {businesses.map((business) => (
+
+    <div
+      key={business.businessOwnerId}
+      className="border-b py-4 flex justify-between items-center"
+    >
+
+      <div>
+
+        <p className="font-bold">
+          {business.businessName}
+        </p>
+
+        <p className="text-gray-500">
+          {business.email}
+        </p>
+
+        <p className="text-sm">
+          {business.city}, {business.region}
+        </p>
+
+        <p>
+          Status: {business.status}
+        </p>
+
+      </div>
+
+      <div className="flex gap-2">
+
+       {business.status === "Suspended" ? (
+  <button
+    onClick={() => activateBusiness(business.businessOwnerId)}
+    className="bg-green-600 text-white px-3 py-2 rounded"
+  >
+    Unsuspend
+  </button>
+) : (
+  <button
+    onClick={() => suspendBusiness(business.businessOwnerId)}
+    className="bg-yellow-500 text-white px-3 py-2 rounded"
+  >
+    Suspend
+  </button>
+)}
+
+{business.status === "Blocked" ? (
+  <button
+    onClick={() => activateBusiness(business.businessOwnerId)}
+    className="bg-blue-600 text-white px-3 py-2 rounded"
+  >
+    Unblock
+  </button>
+) : (
+  <button
+    onClick={() => blockBusiness(business.businessOwnerId)}
+    className="bg-gray-800 text-white px-3 py-2 rounded"
+  >
+    Block
+  </button>
+)}
+
+<button
+  onClick={() => deleteBusiness(business.businessOwnerId)}
+  className="bg-red-600 text-white px-3 py-2 rounded"
+>
+  Delete
+</button>
+      </div>
+
+    </div>
+
+  ))}
+
+</div>
+
+</div>
       </div>
 
     </main>
