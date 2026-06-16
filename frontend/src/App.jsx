@@ -16,11 +16,12 @@ import BusinessProfile from "./pages/Business/BusinessProfile";
 import Technician from "./pages/Business/Technician";
 import Payment from './pages/Payment/Payment'
 import HowItWorks from './pages/How It Works/howItWorks'
+import AvailableRequest from './pages/Technician/AvailableRequest'
 import { Routes, Route , useLocation } from 'react-router-dom'
 function App() {
 
 const location = useLocation()
-const hideLayout =location.pathname === '/technician-dashboard' || location.pathname === '/business-dashboard'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician' || location.pathname === '/emergency'
+const hideLayout =location.pathname === '/technician-dashboard' || location.pathname === '/available-requests' || location.pathname === '/business-dashboard'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician' || location.pathname === '/emergency'
 
 
 
@@ -52,6 +53,7 @@ const hideLayout =location.pathname === '/technician-dashboard' || location.path
    <Route path="/technician" element={<Technician />} />
    <Route path="/payment" element={<Payment />} />
    <Route path="/how-it-works" element={<HowItWorks />} />
+   <Route path="/available-requests" element={<AvailableRequest />} />
 
 </Routes>
       </main>

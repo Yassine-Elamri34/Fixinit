@@ -126,10 +126,12 @@ const declineRequest = async (requestId) => {
               <p className="font-semibold">Dashboard</p>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
+            {/* <div 
+            onClick={() => navigate("/available-requests")}
+            className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <ClipboardList />
               <p>Available Requests</p>
-            </div>
+            </div> */}
 
            <div
   onClick={() => navigate("/technician-schedule")}
