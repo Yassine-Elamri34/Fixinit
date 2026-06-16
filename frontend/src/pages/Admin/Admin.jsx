@@ -233,7 +233,7 @@ useEffect(() => {
               }
               className="mt-8 bg-blue-600 text-white px-6 py-3 rounded-2xl flex items-center gap-2 hover:bg-blue-700 transition"
             >
-              Open Dashboard
+              Open Dashboard.
               <ArrowRight size={18} />
             </button>
 
