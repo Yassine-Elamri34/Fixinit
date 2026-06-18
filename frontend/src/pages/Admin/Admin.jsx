@@ -120,7 +120,7 @@ useEffect(() => {
 
         {/* STATS */}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
 
           <div className="bg-white rounded-3xl p-8 shadow-md text-center">
 
