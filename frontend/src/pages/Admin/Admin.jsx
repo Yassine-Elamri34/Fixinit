@@ -124,54 +124,55 @@ useEffect(() => {
 
           <div className="bg-white rounded-3xl p-8 shadow-md text-center">
 
-            <Users
-              size={45}
-              className="mx-auto text-[#041B4D] mb-4"
-            />
+  <Users
+    size={45}
+    className="mx-auto text-[#041B4D] mb-4"
+  />
 
-            <h2 className="text-4xl font-bold text-[#041B4D]">
-              {technicians.length}
-            </h2>
+  <h2 className="text-4xl font-bold text-[#041B4D]">
+    {technicians.length}
+  </h2>
 
-            <p className="text-gray-500 mt-2">
-              Technicians
-            </p>
+  <p className="text-gray-500 mt-2 mb-4">
+    Technicians
+  </p>
 
-          </div>
+  <div className="text-sm space-y-1">
+    {technicians.slice(0, 5).map((tech) => (
+      <p key={tech.technicianId}>
+        {tech.firstName} {tech.lastName}
+      </p>
+    ))}
+  </div>
 
-          <div className="bg-white rounded-3xl p-8 shadow-md text-center">
-
-            <Briefcase
-              size={45}
-              className="mx-auto text-blue-600 mb-4"
-            />
-
-            <h2 className="text-4xl font-bold text-blue-600">
-              {businesses.length}
-            </h2>
-
-            <p className="text-gray-500 mt-2">
-              Businesses
-            </p>
-
-          </div>
+</div>
 
           <div className="bg-white rounded-3xl p-8 shadow-md text-center">
 
-            <ClipboardList
-              size={45}
-              className="mx-auto text-green-600 mb-4"
-            />
+  <Briefcase
+    size={45}
+    className="mx-auto text-blue-600 mb-4"
+  />
 
-            <h2 className="text-4xl font-bold text-green-600">
-              0
-            </h2>
+  <h2 className="text-4xl font-bold text-blue-600">
+    {businesses.length}
+  </h2>
 
-            <p className="text-gray-500 mt-2">
-              Requests
-            </p>
+  <p className="text-gray-500 mt-2 mb-4">
+    Businesses
+  </p>
 
-          </div>
+  <div className="text-sm space-y-1">
+    {businesses.slice(0, 5).map((business) => (
+      <p key={business.businessOwnerId}>
+        {business.businessName}
+      </p>
+    ))}
+  </div>
+
+</div>
+
+          
 
         </div>
 
