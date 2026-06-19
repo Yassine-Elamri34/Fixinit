@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 function Chatbot() {
 
   const [openChat, setOpenChat] = useState(false)
-
-  const [bottomOffset, setBottomOffset] = useState(24)
 
   const [messages, setMessages] = useState([
     {
@@ -15,79 +13,60 @@ function Chatbot() {
 
   const [input, setInput] = useState('')
 
-
+  // NEW: tracks extra offset (in px) to push the widget up so it
+  // never overlaps the footer
+  const [bottomOffset, setBottomOffset] = useState(24)
 
   useEffect(() => {
 
-  const updateOffset = () => {
+    function handleScrollOrResize() {
 
-  const footer = document.querySelector("footer");
+      const footer = document.querySelector('footer')
 
-  if (!footer) return;
+      if (!footer) return
 
-  const footerRect = footer.getBoundingClientRect();
+      const footerRect = footer.getBoundingClientRect()
+      const viewportHeight = window.innerHeight
 
-  const overlap = window.innerHeight - footerRect.top;
+      // How much of the footer is currently visible inside the viewport
+      const visibleFooterHeight = viewportHeight - footerRect.top
 
-  const maxOffset = 120;
+      if (visibleFooterHeight > 0) {
+        // Footer is intruding into the viewport -> push widget up
+        // by that amount, plus the base 24px gap
+        setBottomOffset(visibleFooterHeight + 24)
+      } else {
+        // Footer not visible yet -> default gap from bottom of screen
+        setBottomOffset(24)
+      }
 
-  if (overlap > 0) {
+    }
 
-    setBottomOffset(
-      Math.min(overlap + 24, maxOffset)
-    );
+    handleScrollOrResize()
 
-  } else {
-
-    setBottomOffset(24);
-
-  }
-
-};
-
-
-
-    window.addEventListener('scroll', updateOffset)
-
-    window.addEventListener('resize', updateOffset)
-
-
-
-    updateOffset()
-
-
+    window.addEventListener('scroll', handleScrollOrResize)
+    window.addEventListener('resize', handleScrollOrResize)
 
     return () => {
-
-      window.removeEventListener('scroll', updateOffset)
-
-      window.removeEventListener('resize', updateOffset)
-
+      window.removeEventListener('scroll', handleScrollOrResize)
+      window.removeEventListener('resize', handleScrollOrResize)
     }
 
   }, [])
 
-
-
   function sendMessage() {
 
     if (input.trim() === '') return
-
-
 
     const userMessage = {
       sender: 'User',
       text: input,
     }
 
-
-
     let aiResponse = {
       sender: 'AI',
       text: 'A Fixinit technician will assist you shortly.',
     }
-
-
 
     if (input.toLowerCase().includes('pos')) {
 
@@ -96,8 +75,6 @@ function Chatbot() {
 
     }
 
-
-
     if (input.toLowerCase().includes('internet')) {
 
       aiResponse.text =
@@ -105,33 +82,26 @@ function Chatbot() {
 
     }
 
-
-
     setMessages((prev) => [
       ...prev,
       userMessage,
       aiResponse,
     ])
 
-
-
     setInput('')
 
   }
 
-
-
   return (
 
     <div>
-
 
       {/* CHAT BUTTON */}
 
       <button
         onClick={() => setOpenChat(!openChat)}
         style={{ bottom: `${bottomOffset}px` }}
-        className="fixed right-6 bg-[#041B4D] text-white w-16 h-16 rounded-2xl shadow-[0_10px_25px_-5px_rgba(4,27,77,0.5)] hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-6px_rgba(4,27,77,0.55)] active:scale-95 transition-all duration-200 z-50 flex items-center justify-center"
+        className="fixed right-3 md:right-6 bg-[#041B4D] text-white w-16 h-16 rounded-2xl shadow-[0_10px_25px_-5px_rgba(4,27,77,0.5)] hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-6px_rgba(4,27,77,0.55)] active:scale-95 transition-all duration-200 z-50 flex items-center justify-center"
       >
 
         {openChat ? (
@@ -154,17 +124,14 @@ function Chatbot() {
 
       </button>
 
-
-
       {/* CHAT WINDOW */}
 
       {openChat && (
 
         <div
-          style={{ bottom: `${bottomOffset + 80}px` }}
-          className="fixed right-6 w-[350px] h-[420px] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(4,27,77,0.35)] border border-gray-100 flex flex-col overflow-hidden z-50"
+          style={{ bottom: `${bottomOffset + 76}px` }}
+          className="fixed right-3 md:right-6 w-[calc(100vw-24px)] max-w-[350px] h-[420px] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(4,27,77,0.35)] border border-gray-100 flex flex-col overflow-hidden z-50"
         >
-
 
           {/* HEADER */}
 
@@ -189,8 +156,6 @@ function Chatbot() {
             </div>
 
           </div>
-
-
 
           {/* MESSAGES */}
 
@@ -231,8 +196,6 @@ function Chatbot() {
 
           </div>
 
-
-
           {/* INPUT */}
 
           <div className="p-3 border-t border-gray-100 bg-white flex items-center gap-2">
@@ -245,8 +208,6 @@ function Chatbot() {
               onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
               className="flex-1 border border-gray-200 bg-gray-50 rounded-xl px-3.5 py-2.5 text-[13.5px] outline-none focus:border-[#041B4D]/40 focus:bg-white focus:ring-2 focus:ring-[#041B4D]/10 transition-colors"
             />
-
-
 
             <button
               onClick={sendMessage}

@@ -19,13 +19,13 @@ function HowItWorks() {
 
       <section className="bg-[#041B4D] text-white py-20">
 
-        <div className="max-w-6xl mx-auto px-8 text-center">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 text-center">
 
-          <h1 className="text-6xl font-bold">
+         <h1 className="text-4xl md:text-6xl font-bold">
             How Fixinit Works
           </h1>
 
-          <p className="text-xl text-blue-100 mt-6 max-w-3xl mx-auto">
+          <p className="text-base md:text-xl text-blue-100 mt-6 max-w-3xl mx-auto">
             Fixinit connects businesses with local IT technicians
             for fast, reliable, and professional technical support.
           </p>
@@ -36,7 +36,7 @@ function HowItWorks() {
 
       {/* BUSINESS OWNER */}
 
-      <section className="max-w-6xl mx-auto px-8 py-20">
+      <section className="max-w-6xl mx-auto px-4 md:px-8 py-20">
 
         <div className="text-center mb-14">
 
@@ -45,13 +45,13 @@ function HowItWorks() {
             className="mx-auto text-green-600 mb-4"
           />
 
-          <h2 className="text-4xl font-bold text-[#041B4D]">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#041B4D]">
             For Business Owners
           </h2>
 
         </div>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
           <div className="bg-white rounded-3xl p-8 shadow-md text-center">
 
@@ -120,7 +120,7 @@ function HowItWorks() {
 
       <section className="bg-white py-20">
 
-        <div className="max-w-6xl mx-auto px-8">
+        <div className="max-w-6xl mx-auto px-4 md:px-8">
 
           <div className="text-center mb-14">
 
@@ -135,7 +135,7 @@ function HowItWorks() {
 
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
             <div className="bg-gray-50 rounded-3xl p-8 text-center">
 
@@ -215,13 +215,13 @@ function HowItWorks() {
 
       <section className="py-20 bg-red-50">
 
-        <div className="max-w-5xl mx-auto px-8 text-center">
+        <div className="max-w-5xl mx-auto px-4 md:px-8 text-center">
 
-          <h2 className="text-5xl font-bold text-red-600">
+          <h2 className="text-3xl md:text-5xl font-bold text-red-600">
             Emergency IT Help
           </h2>
 
-          <p className="text-xl text-gray-600 mt-6 leading-8">
+          <p className="text-base md:text-xl text-gray-600 mt-6 leading-8">
             Businesses experiencing critical technical issues can
             submit an Emergency IT Request. Emergency requests
             receive priority visibility and are designed to connect

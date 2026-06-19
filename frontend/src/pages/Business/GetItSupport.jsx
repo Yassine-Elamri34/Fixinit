@@ -15,7 +15,7 @@ function GetItSupport() {
     <main className="bg-gray-50">
 {/* VIDEO BANNER */}
 
-<div className="relative h-[350px] overflow-hidden">
+<div className="relative h-[250px] md:h-[350px] overflow-hidden">
 
 <video
   autoPlay
@@ -30,15 +30,15 @@ function GetItSupport() {
     />
   </video>
 
-  <div className="absolute inset-0 bg-black/40 flex items-center px-10">
+  <div className="absolute inset-0 bg-black/40 flex items-center px-4 md:px-10">
 
     <div className="text-white">
 
-      <h2 className="text-5xl font-bold">
+      <h2 className="text-3xl md:text-5xl font-bold">
         Find Local IT Support
       </h2>
 
-      <p className="text-lg mt-3 max-w-2xl">
+      <p className="text-sm md:text-lg mt-3 max-w-2xl">
         Connect with trusted technicians for computer repairs,
         network issues, POS support, software installation,
         and emergency IT assistance
@@ -78,9 +78,9 @@ function GetItSupport() {
 
       {/* BENEFITS */}
 
-      <section className="max-w-7xl mx-auto px-8 py-20">
+      <section className="max-w-7xl mx-auto px-4 md:px-4 md:px-8 py-16 md:py-20">
 
-        <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-14">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#041B4D] mb-10 md:mb-14">
           Why Businesses Choose Fixinit
         </h2>
 
@@ -148,13 +148,13 @@ function GetItSupport() {
 
       <section className="bg-white py-20">
 
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
 
           <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-16">
             How It Works
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
 
             <div>
 
@@ -232,7 +232,7 @@ function GetItSupport() {
 
       {/* COMMON ISSUES */}
 
-      <section className="max-w-7xl mx-auto px-8 py-20">
+      <section className="max-w-7xl mx-auto px-4 md:px-4 md:px-8 py-16 md:py-20">
 
         <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-12">
           Common IT Issues We Help With
@@ -255,7 +255,7 @@ function GetItSupport() {
 
             <div
               key={item}
-              className="bg-white px-6 py-3 rounded-full shadow-sm"
+              className="bg-white px-4 py-3 rounded-full shadow-sm text-sm md:text-base"
             >
               {item}
             </div>
@@ -270,15 +270,15 @@ function GetItSupport() {
 
       <section className="bg-gray-50 py-20">
 
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
 
-          <div className="bg-white rounded-3xl shadow-md p-12 text-center">
+          <div className="bg-white rounded-3xl shadow-md p-6 md:p-12 text-center">
 
-            <h2 className="text-5xl font-bold text-[#041B4D] mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#041B4D] mb-6">
               Need IT Support?
             </h2>
 
-            <p className="text-xl text-gray-600 mb-10">
+            <p className="text-base md:text-xl text-gray-600 mb-10">
               Create your business account and connect with
               qualified technicians today.
             </p>

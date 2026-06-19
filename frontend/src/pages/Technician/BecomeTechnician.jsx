@@ -15,7 +15,7 @@ function BecomeTechnician() {
     <main className="min-h-screen bg-gray-50">
 {/* VIDEO BANNER */}
 
-<div className="relative h-90  overflow-hidden ">
+<div className="relative h-[220px] sm:h-[280px] md:h-[350px] overflow-hidden">
 
   <video
     autoPlay
@@ -30,15 +30,15 @@ function BecomeTechnician() {
     />
   </video>
 
-  <div className="absolute inset-0 bg-black/40 flex items-center px-10">
+  <div className="absolute inset-0 bg-black/40 flex items-center px-4 sm:px-6 md:px-10">
 
     <div className="text-white">
 
-      <h2 className="text-4xl font-bold">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
         Manage Your IT Requests
       </h2>
 
-      <p className="text-lg mt-3 max-w-2xl">
+      <p className="text-sm sm:text-base md:text-lg mt-3 max-w-xl md:max-w-2xl">
         Review incoming support requests, accept jobs,
         update progress, and keep businesses informed.
       </p>
@@ -77,15 +77,15 @@ function BecomeTechnician() {
 
       {/* BENEFITS */}
 
-      <section className="max-w-7xl mx-auto px-8 py-20">
+      <section className="max-w-7xl mx-auto px-4 md:px-8 py-20">
 
-        <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-14">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#041B4D] mb-14">
           Why Join Fixinit?
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          <div className="bg-white p-8 rounded-3xl shadow-md hover:shadow-lg transition">
+          <div className="bg-white p-6 md:p-8 rounded-3xl shadow-md hover:shadow-lg transition">
 
             <Briefcase
               size={40}
@@ -147,13 +147,13 @@ function BecomeTechnician() {
 
       <section className="bg-white py-20">
 
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
 
-          <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#041B4D] mb-16">
             How It Works
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
 
             <div className="text-center">
 
@@ -217,13 +217,13 @@ function BecomeTechnician() {
 
       {/* SERVICES */}
 
-      <section className="max-w-7xl mx-auto px-8 py-20">
+      <section className="max-w-7xl mx-auto px-4 md:px-8 py-20">
 
-        <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-14">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#041B4D] mb-14">
           Popular Services
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
 
           {[
             "Computer Repair",
@@ -240,7 +240,7 @@ function BecomeTechnician() {
 
             <div
               key={service}
-              className="bg-white p-5 rounded-2xl shadow-md text-center hover:shadow-lg transition"
+              className="bg-white p-4 md:p-5 rounded-2xl shadow-md text-center hover:shadow-lg transition"
             >
 
               <Wrench
@@ -264,18 +264,18 @@ function BecomeTechnician() {
 
       <section className="bg-white py-20">
 
-        <div className="max-w-6xl mx-auto px-8 text-center">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 text-center">
 
           <Shield
             size={60}
             className="mx-auto text-blue-700 mb-6"
           />
 
-          <h2 className="text-4xl font-bold text-[#041B4D] mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#041B4D] mb-8">
             Who Can Join?
           </h2>
 
-          <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Fixinit welcomes IT support specialists, help desk
             technicians, network technicians, system
             administrators, computer repair professionals,
@@ -289,17 +289,17 @@ function BecomeTechnician() {
 
       {/* CTA */}
 
-      <section className="bg-gradient-to-b from-white via-blue-50 to-[#041B4D] py-24">
+      <section className="bg-gray-50 py-24">
 
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
 
-         <div className="bg-white rounded-3xl shadow-md p-14 text-center">
+         <div className="bg-white rounded-3xl shadow-md p-6 md:p-14 text-center">
 
-            <h2 className="text-5xl font-bold text-[#041B4D] mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#041B4D] mb-6">
               Ready to Start?
             </h2>
 
-            <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
               Create your technician account today and begin
               receiving IT support requests from businesses in
               your area.
@@ -307,7 +307,7 @@ function BecomeTechnician() {
 
             <button
               onClick={() => navigate("/sign-up")}
-              className="bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition"
+              className="bg-green-600 hover:bg-green-700 text-white px-6 md:px-10 py-4 rounded-2xl font-bold text-base md:text-lg transition"
             >
               Become a Technician
             </button>
