@@ -16,7 +16,7 @@ function Home() {
     <main className="bg-gray-50">
 {/* VIDEO HERO */}
 
-<section className="relative h-[350px] overflow-hidden">
+<section className="relative h-[250px] md:h-[350px] overflow-hidden">
 
   <video
     autoPlay
@@ -35,11 +35,11 @@ function Home() {
 
     <div className="text-center text-white px-6">
 
-      <h1 className="text-6xl font-bold mb-4">
+      <h1 className="text-3xl md:text-6xl font-bold mb-4">
         Fast Local IT Support
       </h1>
 
-      <p className="text-xl max-w-3xl">
+      <p className="text-base md:text-xl max-w-3xl">
         Connect with trusted technicians for on-site,
         emergency, and business IT support
       </p>
@@ -51,7 +51,7 @@ function Home() {
 </section>
       {/* HERO */}
 
-      <section className="max-w-7xl mx-auto px-8 py-20">
+      <section className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -61,21 +61,21 @@ function Home() {
               Trusted Local IT Support
             </span>
 
-            <h1 className="text-6xl font-bold text-gray-900 mt-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mt-6 leading-tight">
               Fast IT Support When Your Business Needs It Most
             </h1>
 
-            <p className="text-xl text-gray-600 mt-6 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 mt-6 leading-relaxed">
               Connect with skilled local IT technicians for
               troubleshooting, emergency support, network issues,
               POS systems, hardware repairs, and more.
             </p>
 
-            <div className="flex gap-4 mt-10">
+            <div className="flex flex-col sm:flex-row gap-4 mt-10">
 
               <button
                 onClick={() => navigate("/get-it-support")}
-                className="bg-[#041B4D] hover:bg-blue-900 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-2"
+                className=" w-full sm:w-auto bg-[#041B4D] hover:bg-blue-900 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-2"
               >
                 Get IT Support
                 <ArrowRight size={20} />
@@ -83,7 +83,7 @@ function Home() {
 
               <button
                 onClick={() => navigate("/become-technician")}
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-2xl font-bold"
+                className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-2xl font-bold"
               >
                 Join as Technician
               </button>
@@ -115,7 +115,7 @@ function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
 
             <div>
-              <h2 className="text-4xl font-bold text-[#041B4D]">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#041B4D]">
                 24/7
               </h2>
               <p className="text-gray-600 mt-2">
@@ -124,7 +124,7 @@ function Home() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-bold text-[#041B4D]">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#041B4D]">
                 10 Min
               </h2>
               <p className="text-gray-600 mt-2">
@@ -133,7 +133,7 @@ function Home() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-bold text-[#041B4D]">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#041B4D]">
                 100%
               </h2>
               <p className="text-gray-600 mt-2">
@@ -160,7 +160,7 @@ function Home() {
 
       <section className="max-w-7xl mx-auto px-8 py-20">
 
-        <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-14">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#041B4D] mb-14">
           Why Choose Fixinit?
         </h2>
 
@@ -244,7 +244,7 @@ function Home() {
 
         <div className="max-w-6xl mx-auto px-8">
 
-          <h2 className="text-4xl font-bold text-center text-[#041B4D] mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#041B4D] mb-16">
             How It Works
           </h2>
 
@@ -290,13 +290,13 @@ function Home() {
 
         <div className="max-w-5xl mx-auto px-8">
 
-          <div className="bg-white rounded-3xl p-12 text-center">
+          <div className="bg-white rounded-3xl p-6 md:p-12 text-center">
 
-            <h2 className="text-5xl font-bold text-[#041B4D] mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#041B4D] mb-6">
               Ready to Get Started?
             </h2>
 
-            <p className="text-xl text-gray-600 mb-10">
+            <p className="text-base md:text-xl text-gray-600 mb-10">
               Whether you need IT support or want to offer your
               services as a technician, Fixinit makes it simple
             </p>

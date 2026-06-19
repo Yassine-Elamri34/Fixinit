@@ -1,23 +1,27 @@
 import { ShieldCheck, Wrench, Menu , Monitor, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useState } from "react";
 
 function Navbar() {
+const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+
 
   return (
 
-    <nav className="w-full h-20 bg-white shadow-md flex items-center justify-between px-12">
+    <nav className="w-full min-h-[70px] md:h-20 bg-white shadow-md flex items-center justify-between px-4 md:px-12 relative">
 
       {/* LOGO */}
 
      <div className="flex items-center gap-3 cursor-pointer">
 
   
-<MapPin className="text-blue-600 w-10 h-10" />
+<MapPin className="text-blue-600 w-7 h-7 md:w-10 md:h-10" />
 
 
   <div>
 <Link to="/">
-    <h1 className="text-3xl font-bold text-blue-600">
+    <h1 className="text-xl md:text-3xl font-bold text-blue-600">
 
       Fixinit
 
@@ -160,11 +164,53 @@ function Navbar() {
         </div>
 
       </div>
-<button className="lg:hidden">
-
+<button
+  className="lg:hidden"
+  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+>
   <Menu className="w-8 h-8 text-blue-600" />
-
 </button>
+
+{mobileMenuOpen && (
+
+  <div className="absolute top-20 left-0 w-full bg-white shadow-lg lg:hidden z-50">
+
+    <div className="flex flex-col p-5 gap-5 font-semibold text-gray-700">
+
+      <Link to="/" className="border-b pb-3"  onClick={() => setMobileMenuOpen(false)}>
+        Home
+      </Link>
+
+      <Link to="/how-it-works" className="border-b pb-3" onClick={() => setMobileMenuOpen(false)}>
+        How It Works
+      </Link>
+
+      <Link to="/get-it-support"  className="border-b pb-3" onClick={() => setMobileMenuOpen(false)}>
+        Get IT Support
+      </Link>
+
+      <Link to="/become-technician" className="border-b pb-3"  onClick={() => setMobileMenuOpen(false)}>
+        Join as a Technician
+      </Link>
+
+      <Link to="/emergency" className="border-b pb-3"  onClick={() => setMobileMenuOpen(false)}>
+        Emergency Help
+      </Link>
+
+      <Link to="/login" className="border-b pb-3"  onClick={() => setMobileMenuOpen(false)}>
+        Log In
+      </Link>
+
+      <Link to="/sign-up"  className="border-b pb-3" onClick={() => setMobileMenuOpen(false)}>
+        Sign Up
+      </Link>
+
+    </div>
+
+  </div>
+
+)}
+
     </nav>
 
   )
