@@ -19,31 +19,31 @@ function Chatbot() {
 
   useEffect(() => {
 
-    const updateOffset = () => {
+  const updateOffset = () => {
 
-      const footer = document.querySelector('footer')
+  const footer = document.querySelector("footer");
 
-      if (!footer) return
+  if (!footer) return;
 
-      const footerRect = footer.getBoundingClientRect()
+  const footerRect = footer.getBoundingClientRect();
 
-      const windowHeight = window.innerHeight
+  const overlap = window.innerHeight - footerRect.top;
 
-      const footerVisibleHeight = windowHeight - footerRect.top
+  const maxOffset = 120;
 
+  if (overlap > 0) {
 
+    setBottomOffset(
+      Math.min(overlap + 24, maxOffset)
+    );
 
-      if (footerVisibleHeight > 0) {
+  } else {
 
-        setBottomOffset(footerVisibleHeight + 16)
+    setBottomOffset(24);
 
-      } else {
+  }
 
-        setBottomOffset(24)
-
-      }
-
-    }
+};
 
 
 
@@ -131,10 +131,26 @@ function Chatbot() {
       <button
         onClick={() => setOpenChat(!openChat)}
         style={{ bottom: `${bottomOffset}px` }}
-        className="fixed right-6 bg-[#041B4D] text-white w-16 h-16 rounded-full shadow-lg hover:scale-105 transition z-50 text-2xl"
+        className="fixed right-6 bg-[#041B4D] text-white w-16 h-16 rounded-2xl shadow-[0_10px_25px_-5px_rgba(4,27,77,0.5)] hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-6px_rgba(4,27,77,0.55)] active:scale-95 transition-all duration-200 z-50 flex items-center justify-center"
       >
 
-        {openChat ? '×' : '💬'}
+        {openChat ? (
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        ) : (
+          <>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 12.5C4 7.81 7.81 4 12.5 4S21 7.81 21 12.5 17.19 21 12.5 21c-1.27 0-2.47-.27-3.55-.76L4 21l1.36-4.4A8.46 8.46 0 0 1 4 12.5Z"
+                stroke="white"
+                strokeWidth="1.8"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className="absolute top-2 right-2 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#041B4D]" />
+          </>
+        )}
 
       </button>
 
@@ -146,25 +162,31 @@ function Chatbot() {
 
         <div
           style={{ bottom: `${bottomOffset + 80}px` }}
-          className="fixed right-6 w-[350px] h-[390px] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden z-50"
+          className="fixed right-6 w-[350px] h-[420px] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(4,27,77,0.35)] border border-gray-100 flex flex-col overflow-hidden z-50"
         >
 
 
           {/* HEADER */}
 
-          <div className="bg-[#041B4D] text-white p-5">
+          <div className="bg-gradient-to-br from-[#0A2666] to-[#041B4D] text-white px-5 py-4 flex items-center gap-3">
 
-            <h2 className="text-xl font-bold">
+            <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-sm font-semibold tracking-tight">
+              Fx
+            </div>
 
-              Fixinit Support
+            <div className="flex-1 min-w-0">
+              <h2 className="text-[15px] font-semibold leading-tight">
 
-            </h2>
+                Fixinit Support
 
-            <p className="text-sm text-blue-200 mt-1">
+              </h2>
 
-              24/7 IT Assistance
+              <p className="text-xs text-blue-200/80 mt-0.5 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                Online now
 
-            </p>
+              </p>
+            </div>
 
           </div>
 
@@ -172,24 +194,30 @@ function Chatbot() {
 
           {/* MESSAGES */}
 
-          <div className="flex-1 overflow-y-auto p-4 bg-gray-50 space-y-4">
+          <div className="flex-1 overflow-y-auto px-4 py-4 bg-[#FAFAF8] space-y-3">
 
             {messages.map((message, index) => (
 
               <div
                 key={index}
-                className={`flex ${
+                className={`flex items-end gap-2 ${
                   message.sender === 'User'
                     ? 'justify-end'
                     : 'justify-start'
                 }`}
               >
 
+                {message.sender !== 'User' && (
+                  <div className="w-6 h-6 rounded-full bg-[#041B4D] text-white text-[10px] font-semibold flex items-center justify-center flex-shrink-0 mb-0.5">
+                    Fx
+                  </div>
+                )}
+
                 <div
-                  className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm ${
+                  className={`max-w-[78%] px-3.5 py-2.5 rounded-2xl text-[13.5px] leading-relaxed ${
                     message.sender === 'User'
-                      ? 'bg-[#041B4D] text-white rounded-br-sm'
-                      : 'bg-white border border-gray-200 text-gray-800 rounded-bl-sm'
+                      ? 'bg-[#041B4D] text-white rounded-br-md'
+                      : 'bg-white border border-gray-200/80 text-gray-800 rounded-bl-md shadow-sm'
                   }`}
                 >
 
@@ -207,24 +235,34 @@ function Chatbot() {
 
           {/* INPUT */}
 
-          <div className="p-4 border-t border-gray-200 bg-white flex items-center gap-2">
+          <div className="p-3 border-t border-gray-100 bg-white flex items-center gap-2">
 
             <input
               type="text"
               placeholder="Describe your IT issue..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="flex-1 border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-blue-500"
+              onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+              className="flex-1 border border-gray-200 bg-gray-50 rounded-xl px-3.5 py-2.5 text-[13.5px] outline-none focus:border-[#041B4D]/40 focus:bg-white focus:ring-2 focus:ring-[#041B4D]/10 transition-colors"
             />
 
 
 
             <button
               onClick={sendMessage}
-              className="bg-[#041B4D] text-white px-5 py-3 rounded-xl hover:bg-blue-700 transition"
+              disabled={!input.trim()}
+              className="bg-[#041B4D] disabled:bg-gray-300 text-white w-10 h-10 rounded-xl flex items-center justify-center hover:bg-[#0A2666] active:scale-95 transition-all flex-shrink-0"
             >
 
-              Send
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M3.5 12L20.5 4L13.5 21L11 13.5L3.5 12Z"
+                  stroke="white"
+                  strokeWidth="1.8"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                />
+              </svg>
 
             </button>
 
