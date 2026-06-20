@@ -53,7 +53,7 @@ else if (response.data.role === "Admin") {
 };
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-6 py-20 bg-cover bg-center bg-no-repeat"
+    <main className="min-h-screen flex items-center justify-center px-4 md:px-6 py-10 md:py-20 bg-cover bg-center bg-no-repeat overflow-x-hidden"
     style={{backgroundImage:`url(${loginBackground})`,
   }}>
       
@@ -64,19 +64,19 @@ else if (response.data.role === "Admin") {
 
         {/* LEFT SIDE */}
 
-        <div className="bg-[#041B4D] text-white p-14 flex flex-col justify-center">
+        <div className="bg-[#041B4D] text-white p-6 md:p-10 lg:p-14 flex flex-col justify-center">
 
           <p className="text-blue-300 font-semibold tracking-widest uppercase mb-4">
             Welcome Back
           </p>
 
-          <h1 className="text-5xl font-bold leading-tight">
+          <h1 className="text-3xl md:text-5xl font-bold leading-tight">
             Login To Your
             <br />
             Fixinit Account
           </h1>
 
-          <p className="mt-8 text-blue-100 leading-8 text-lg max-w-md">
+          <p className="mt-6 md:mt-8 text-blue-100 leading-7 md:leading-8 text-base md:text-lg max-w-md">
             Access your dashboard, manage service requests, and connect with trusted local IT technicians.
           </p>
 
@@ -107,9 +107,9 @@ else if (response.data.role === "Admin") {
 
         {/* RIGHT SIDE */}
 
-        <div className="p-14 flex flex-col justify-center">
+        <div className="p-6 md:p-10 lg:p-14 flex flex-col justify-center">
 
-          <h2 className="text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Sign In
           </h2>
 
@@ -135,7 +135,7 @@ else if (response.data.role === "Admin") {
                 placeholder="Enter your email"
                 value={email}
 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
+                className="w-full border border-gray-300 rounded-2xl px-4 md:px-5 py-3 md:py-4 outline-none focus:border-blue-500"
               />
             </div>
 
@@ -155,7 +155,7 @@ onChange={(e) => setPassword(e.target.value)}
             </div>
 
 
-            <div className="flex items-center justify-between text-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm">
 
               <label className="flex items-center gap-2 text-gray-600">
                 <input type="checkbox" />

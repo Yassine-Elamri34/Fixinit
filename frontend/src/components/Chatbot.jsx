@@ -1,4 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
+import axios from "axios";
+
+
+
 
 function Chatbot() {
 
@@ -54,43 +58,49 @@ function Chatbot() {
 
   }, [])
 
-  function sendMessage() {
+ const sendMessage = async () => {
 
-    if (input.trim() === '') return
+  if (!input.trim()) return;
 
-    const userMessage = {
-      sender: 'User',
-      text: input,
-    }
+  const userMessage = {
+    sender: "User",
+    text: input,
+  };
 
-    let aiResponse = {
-      sender: 'AI',
-      text: 'A Fixinit technician will assist you shortly.',
-    }
+  setMessages((prev) => [...prev, userMessage]);
 
-    if (input.toLowerCase().includes('pos')) {
+  const currentInput = input;
 
-      aiResponse.text =
-        'This seems to be a POS issue. Emergency support is recommended.'
+  setInput("");
 
-    }
+  try {
 
-    if (input.toLowerCase().includes('internet')) {
+    const response = await axios.post(
+      "https://localhost:7294/api/Chatbot",
+      {
+        message: currentInput,
+      }
+    );
 
-      aiResponse.text =
-        'Please check your router connection before requesting support.'
+    const aiMessage = {
+      sender: "AI",
+      text: response.data.reply,
+    };
 
-    }
+    setMessages((prev) => [...prev, aiMessage]);
 
-    setMessages((prev) => [
-      ...prev,
-      userMessage,
-      aiResponse,
-    ])
+  } catch (error) {
 
-    setInput('')
+    console.log(error);
 
+    const aiMessage = {
+      sender: "AI",
+      text: "Sorry, I couldn't connect to Fixinit AI.",
+    };
+
+    setMessages((prev) => [...prev, aiMessage]);
   }
+};
 
   return (
 

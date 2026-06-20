@@ -44,7 +44,7 @@ try {
   return (
 
     <main
-      className="min-h-screen flex items-center justify-center px-6 py-20 bg-cover bg-center bg-no-repeat"
+      className="min-h-screen flex items-center justify-center px-4 md:px-6 py-10 md:py-20 bg-cover bg-center bg-no-repeat overflow-x-hidden"
       style={{
         backgroundImage: `url(${loginBackground})`,
       }}
@@ -57,7 +57,7 @@ try {
 
         {/* LEFT SIDE */}
 
-        <div className="bg-[#041B4D] text-white p-14 flex flex-col justify-center">
+        <div className="bg-[#041B4D] text-white p-6 md:p-10 lg:p-14 flex flex-col justify-center">
 
           <p className="text-blue-300 font-semibold tracking-widest uppercase mb-4">
 
@@ -65,7 +65,7 @@ try {
 
           </p>
 
-          <h1 className="text-5xl font-bold leading-tight">
+          <h1 className="text-3xl md:text-5xl font-bold leading-tight">
 
             Create Your
             <br />
@@ -73,7 +73,7 @@ try {
 
           </h1>
 
-          <p className="mt-8 text-blue-100 leading-8 text-lg max-w-md">
+          <p className="mt-6 md:mt-8 text-blue-100 leading-7 md:leading-8 text-base md:text-lg max-w-md">
 
             Join our platform to connect with trusted IT technicians and manage your service requests easily .
 
@@ -115,9 +115,9 @@ try {
 
         {/* RIGHT SIDE */}
 
-        <div className="p-14 flex flex-col justify-center">
+        <div className="p-6 md:p-10 lg:p-14 flex flex-col justify-center">
 
-          <h2 className="text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
 
             Sign Up
 
@@ -148,7 +148,7 @@ try {
               <input
                 type="text"
                 placeholder="Enter your full name"
-                className="w-full border border-gray-300 rounded-2xl px-5 py-4 outline-none focus:border-blue-500"
+                className="w-full border border-gray-300 rounded-2xl px-4 md:px-5 py-3 md:py-4 outline-none focus:border-blue-500"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -245,7 +245,7 @@ try {
 
             <button
               type="submit"
-              className="w-full bg-[#041B4D] text-white py-4 rounded-2xl text-lg font-semibold hover:bg-blue-900 transition"
+              className="w-full bg-[#041B4D] text-white py-3 md:py-4 rounded-2xl text-base md:text-lg font-semibold hover:bg-blue-900 transition"
             >
 
               Create Account
