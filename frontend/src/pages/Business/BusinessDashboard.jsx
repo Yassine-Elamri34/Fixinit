@@ -177,6 +177,17 @@ useEffect(() => {
               <p className="font-semibold">Dashboard</p>
             </div>
 
+
+
+             <div 
+             onClick={() => navigate("/nearby-it")}
+             className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
+              <Users />
+              <p className="font-semibold">Nearby IT Support Professionals</p>
+            </div>
+
+
+
             {/* <div className="flex items-center gap-4 text-gray-700 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer transition">
               <ClipboardList />
               <p>My Requests</p>

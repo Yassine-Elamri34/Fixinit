@@ -30,8 +30,11 @@ try {
   console.log(response.data)
   alert('Account created successfully')
 } catch (error) {
-  console.log(error)
-  alert('Somthing went wrong')
+  console.log(error);
+
+  alert(
+    error.response?.data || "Something went wrong"
+  );
 }
 }
 
