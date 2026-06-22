@@ -19,11 +19,12 @@ import HowItWorks from './pages/How It Works/howItWorks'
 import AvailableRequest from './pages/Technician/AvailableRequest'
 import NearbyItSupport from './pages/Business/NearbyItSupport'
 import AboutUs from './pages/About Us/AboutUs'
+import EmergencyRequest from './pages/Business/EmergencyRequest'
 import { Routes, Route , useLocation } from 'react-router-dom'
 function App() {
 
 const location = useLocation()
-const hideLayout =location.pathname === '/technician-dashboard' ||location.pathname === '/nearby-it' || location.pathname === '/available-requests' || location.pathname === '/business-dashboard'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician' || location.pathname === '/emergency'
+const hideLayout =location.pathname === '/technician-dashboard' || location.pathname === '/emergency-request' || location.pathname === '/nearby-it' || location.pathname === '/available-requests' || location.pathname === '/business-dashboard'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician' || location.pathname === '/emergency'
 
 
 
@@ -58,6 +59,7 @@ const hideLayout =location.pathname === '/technician-dashboard' ||location.pathn
    <Route path="/available-requests" element={<AvailableRequest />} />
    <Route path="/nearby-it" element={<NearbyItSupport />} />
    <Route path="/about-us" element={<AboutUs />} />
+   <Route path="/emergency-request" element={<EmergencyRequest />} />
 
 </Routes>
       </main>
