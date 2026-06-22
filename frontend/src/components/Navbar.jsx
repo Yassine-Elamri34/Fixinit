@@ -63,7 +63,7 @@ const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
         </li>
 
        <li className="cursor-pointer hover:text-blue-600 hover:scale-105 transition">
-<Link to="/">
+<Link to="/about-us">
           About Us
 </Link>
         </li>

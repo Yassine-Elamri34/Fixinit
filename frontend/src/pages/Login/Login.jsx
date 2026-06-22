@@ -28,6 +28,11 @@ const handleSubmit = async (e) => {
 
     alert(response.data.message);
 
+    localStorage.setItem(
+  "userId",
+  response.data.userId
+);
+
 console.log(response.data.role);
 
 if (response.data.role === "Technician") {

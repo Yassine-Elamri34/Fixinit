@@ -18,6 +18,7 @@ import Payment from './pages/Payment/Payment'
 import HowItWorks from './pages/How It Works/howItWorks'
 import AvailableRequest from './pages/Technician/AvailableRequest'
 import NearbyItSupport from './pages/Business/NearbyItSupport'
+import AboutUs from './pages/About Us/AboutUs'
 import { Routes, Route , useLocation } from 'react-router-dom'
 function App() {
 
@@ -56,6 +57,7 @@ const hideLayout =location.pathname === '/technician-dashboard' ||location.pathn
    <Route path="/how-it-works" element={<HowItWorks />} />
    <Route path="/available-requests" element={<AvailableRequest />} />
    <Route path="/nearby-it" element={<NearbyItSupport />} />
+   <Route path="/about-us" element={<AboutUs />} />
 
 </Routes>
       </main>
