@@ -130,17 +130,17 @@ const updateProfile = async () => {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 p-10">
-      <div className="max-w-5xl mx-auto space-y-6">
+    <main className="min-h-screen bg-gray-100 p-4 md:p-6 lg:p-10 overflow-x-hidden">
+      <div className="max-w-5xl mx-auto space-y-6 w-full">
 <button
   type="button"
   onClick={() => navigate("/technician-dashboard")}
-  className="bg-gray-700 text-white px-5 py-2 rounded-xl hover:bg-gray-800"
+  className="w-full sm:w-auto bg-gray-700 text-white px-5 py-2 rounded-xl hover:bg-gray-800"
 >
   Back to Dashboard
 </button>
-        <div className="bg-white rounded-3xl shadow-md p-8 flex items-center gap-8">
-          <div className="w-32 h-32 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center">
+        <div className="bg-white rounded-3xl shadow-md p-4 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8">
+          <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center flex-shrink-0">
             {profilePicture ? (
               <img
                 src={`https://localhost:7294${profilePicture}`}
@@ -153,7 +153,7 @@ const updateProfile = async () => {
           </div>
 
           <div className="flex-1">
-           <h1 className="text-4xl font-bold text-blue-700">
+           <h1 className="text-2xl md:text-4xl font-bold text-blue-700">
   {firstName} {lastName}
 </h1>
 
@@ -165,28 +165,22 @@ const updateProfile = async () => {
               {isAvailable ? "Available for requests" : "Not available for requests"}
             </p>
 
-            <div className="mt-5 flex gap-4">
+            <div className="mt-5 flex flex-col sm:flex-row gap-4">
               <input
                 type="file"
                 accept="image/*"
                 onChange={(e) => setSelectedFile(e.target.files[0])}
               />
 
-              <button
-                type="button"
-                onClick={uploadPicture}
-                className="bg-blue-700 text-white px-5 py-2 rounded-xl hover:bg-blue-800"
-              >
-                Upload Picture
-              </button>
+             
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
 
-          <div className="bg-white rounded-3xl shadow-md p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-5">
+          <div className="bg-white rounded-3xl shadow-md p-4 md:p-8">
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-5">
               About Me
             </h2>
 
@@ -197,13 +191,7 @@ const updateProfile = async () => {
               placeholder="Describe your technical experience"
             />
 
-            <button
-              type="button"
-              onClick={updateProfile}
-              className="mt-5 bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
-            >
-              Update Description
-            </button>
+           
           </div>
 
           <div className="bg-white rounded-3xl shadow-md p-8">
@@ -258,23 +246,17 @@ const updateProfile = async () => {
               placeholder="Enter region"
             />
 
-            <button
-              type="button"
-              onClick={updateProfile}
-              className="mt-5 bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
-            >
-              Update Service Details
-            </button>
+          
           </div>
 
         </div>
-        <div className="bg-white rounded-3xl shadow-md p-8 mt-8">
+        <div className="bg-white rounded-3xl shadow-md p-4 md:p-8 mt-8">
 
   <h2 className="text-2xl font-bold text-gray-900 mb-6">
     Technical Skills
   </h2>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
     {availableSkills.map((skill) => (
 
@@ -316,16 +298,16 @@ const updateProfile = async () => {
 
   </div>
 
-  <button
-  type="button"
-  onClick={updateProfile}
-  className="mt-6 bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800"
->
-  Save Skills
-</button>
+  
 
 </div>
-
+<button
+  type="button"
+  onClick={updateProfile}
+  className="w-full mt-8 bg-blue-700 text-white py-4 rounded-2xl font-semibold hover:bg-blue-800"
+>
+  Update Profile
+</button>
         
 
         

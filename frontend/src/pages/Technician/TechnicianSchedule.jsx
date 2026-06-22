@@ -90,26 +90,26 @@ function TechnicianSchedule() {
 
   return (
 
-    <main className="min-h-screen bg-gray-100 p-10">
+    <main className="min-h-screen bg-gray-100 p-4 md:p-6 lg:p-10 overflow-x-hidden">
 
       <div className="max-w-5xl mx-auto">
 
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
 
-          <h1 className="text-4xl font-bold text-blue-700">
+          <h1 className="text-2xl md:text-4xl font-bold text-blue-700">
             Weekly Schedule
           </h1>
 
           <button
             onClick={() => navigate("/technician-dashboard")}
-            className="bg-gray-700 text-white px-5 py-3 rounded-xl hover:bg-gray-800"
+            className="w-full sm:w-auto bg-gray-700 text-white px-5 py-3 rounded-xl hover:bg-gray-800"
           >
             Back to Dashboard
           </button>
 
         </div>
 
-        <div className="bg-white rounded-3xl shadow-md p-8">
+        <div className="bg-white rounded-3xl shadow-md p-4 md:p-8">
 
           <div className="space-y-5">
 
@@ -117,10 +117,10 @@ function TechnicianSchedule() {
 
               <div
                 key={index}
-                className="border border-gray-300 rounded-2xl p-5"
+                className="border border-gray-300 rounded-2xl p-4 md:p-5"
               >
 
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
 
                   <h3 className="font-bold text-lg">
                     {item.day}
@@ -151,7 +151,7 @@ function TechnicianSchedule() {
 
                 {item.isAvailable && (
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
                     <div>
 

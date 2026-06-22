@@ -94,11 +94,11 @@ const declineRequest = async (requestId) => {
 
   return (
 
-    <main className="min-h-screen bg-gray-100 flex">
+    <main className="min-h-screen bg-gray-100 flex flex-col lg:flex-row">
 
       {/* SIDEBAR */}
 
-      <aside className="w-72 h-screen bg-white shadow-lg p-8 flex flex-col justify-between sticky top-0">
+      <aside className="w-full lg:w-72 lg:h-screen bg-white shadow-lg p-4 lg:p-8 flex flex-col justify-between lg:sticky top-0">
 
         <div>
 
@@ -169,14 +169,14 @@ const declineRequest = async (requestId) => {
 
       {/* MAIN CONTENT */}
 
-      <section className="flex-1 p-10">
+      <section className="flex-1 p-4 md:p-6 lg:p-10">
 
 
         {/* TOP BAR */}
 
         <div className="flex items-center justify-between mb-10">
 
-          <h1 className="text-4xl font-bold text-gray-900">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
             Technician Dashboard
           </h1>
 
@@ -187,16 +187,16 @@ const declineRequest = async (requestId) => {
 
         {/* TOP CARDS */}
 
-        <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
 
 
           {/* PROFILE CARD */}
 
-          <div className="bg-white rounded-3xl shadow-md p-8 flex items-center justify-between">
+          <div className="bg-white rounded-3xl shadow-md p-4 md:p-8 flex flex-col md:flex-row items-center gap-4">
 
             <div className="flex items-center gap-6">
 
-              <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-gray-200">
   {technician?.profilePicture ? (
     <img
       src={`https://localhost:7294${technician.profilePicture}`}
@@ -238,11 +238,11 @@ const declineRequest = async (requestId) => {
 
              {/* MIDDLE SECTION */}
 
-<div className="grid grid-cols-3 gap-8">
+<div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
 
   {/* ACTIVE REQUESTS */}
 
-  <div className="col-span-2 bg-white rounded-3xl shadow-md p-8">
+  <div className="xl:col-span-2 bg-white rounded-3xl shadow-md p-4 md:p-8">
 
     <div className="flex items-center justify-between mb-8">
 
@@ -268,7 +268,7 @@ const declineRequest = async (requestId) => {
 
         <div
           key={request.requestId}
-          className="flex items-center justify-between border-b pb-6 mb-6"
+          className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b pb-6 mb-6"
         >
 
           <div className="flex items-center gap-5">
@@ -297,13 +297,13 @@ const declineRequest = async (requestId) => {
 
           {request.status === "Pending" ? (
 
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
 
               <button
                 onClick={() =>
                   acceptRequest(request.requestId)
                 }
-                className="px-5 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700"
+                className="w-full sm:w-auto px-5 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700"
               >
                 Accept
               </button>
@@ -345,7 +345,7 @@ const declineRequest = async (requestId) => {
  request.completionStatus !== "Pending Approval" &&
  request.completionStatus !== "Approved" && (
 
-      <div className="w-72 bg-gray-50 border border-gray-200 rounded-2xl p-4">
+      <div className="w-full lg:w-72 bg-gray-50 border border-gray-200 rounded-2xl p-4">
 
         <p className="font-semibold mb-2 text-gray-800">
           Did you finish this task?

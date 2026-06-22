@@ -1,4 +1,4 @@
-import FixinitTeam from "../assets/FixinitTeam.png";
+import FixinitNetwork from "../assets/fixinit-network.png";
 import {
   Shield,
   Clock,
@@ -51,9 +51,9 @@ function Home() {
 </section>
       {/* HERO */}
 
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
+      <section className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
 
           <div>
 
@@ -92,15 +92,15 @@ function Home() {
 
           </div>
 
-          <div>
+          <div className="flex justify-center">
 
-            <img
-              src={FixinitTeam}
-              alt="Fixinit Team"
-              className="rounded-3xl shadow-lg w-full"
-            />
+ <img
+  src={FixinitNetwork}
+  alt="How Fixinit Works"
+  className="w-full rounded-3xl"
+/>
 
-          </div>
+</div>
 
         </div>
 

@@ -125,7 +125,7 @@ try {
 
           <p className="text-gray-500 mt-3">
 
-            Create your account below.
+            Create your account below
 
           </p>
 

@@ -145,11 +145,11 @@ useEffect(() => {
 
   return (
 
-    <main className="min-h-screen bg-gray-100 flex">
+    <main className="min-h-screen bg-gray-100 flex flex-col lg:flex-row">
 
       {/* SIDEBAR */}
 
-      <aside className="w-72 h-screen bg-white shadow-lg p-8 flex flex-col justify-between sticky top-0">
+      <aside className="w-full lg:w-72 lg:h-screen bg-white shadow-lg p-4 lg:p-8 flex flex-col justify-between lg:sticky top-0">
 
         <div>
 
@@ -225,25 +225,25 @@ useEffect(() => {
 
       {/* MAIN CONTENT */}
 
-      <section className="flex-1 p-10">
+      <section className="flex-1 p-4 md:p-6 lg:p-10">
 
 
         {/* PAGE TITLE */}
 
-        <h1 className="text-4xl font-bold text-green-700 mb-10">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-green-700 mb-6 md:mb-10">
           Business Dashboard
         </h1>
 
 
         {/* WELCOME CARD */}
 
-        <div className="bg-white border border-gray-300 rounded-3xl p-8 mb-8">
+        <div className="bg-white border border-gray-300 rounded-3xl p-4 md:p-8 mb-8">
 
           <p className="text-gray-500">
             Welcome back,
           </p>
 
-          <h2 className="text-4xl font-bold text-black mt-2">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mt-2">
   {business?.businessName || "Business Name"}
 </h2>
 
@@ -302,7 +302,7 @@ useEffect(() => {
 
       <div
         key={request.requestId}
-        className="border-b pb-4 mb-4"
+        className="border-b pb-4 mb-4 overflow-hidden"
       >
 
         <h3 className="font-bold">
@@ -371,7 +371,7 @@ useEffect(() => {
       onClick={() =>
         approveCompletion(request.requestId)
       }
-      className="mt-3 bg-green-600 text-white px-5 py-2 rounded-xl hover:bg-green-700"
+      className="mt-3 w-full sm:w-auto bg-green-600 text-white px-5 py-2 rounded-xl hover:bg-green-700"
     >
       Approve Completion
     </button>
@@ -395,7 +395,7 @@ useEffect(() => {
       Leave a Review
     </p>
 
-    <div className="flex gap-2 mt-3 text-3xl">
+    <div className="flex flex-wrap gap-2 mt-3 text-2xl md:text-3xl">
 
       {[1, 2, 3, 4, 5].map((star) => (
 
@@ -430,12 +430,12 @@ useEffect(() => {
           [request.requestId]: e.target.value
         })
       }
-      className="w-full border rounded-xl p-3 mt-3"
+      className="w-full border rounded-xl p-3 mt-3 resize-none"
     />
 
     <button
       onClick={() => submitReview(request)}
-      className="mt-3 bg-green-600 text-white px-5 py-2 rounded-xl hover:bg-green-700"
+      className="mt-3 w-full sm:w-auto bg-green-600 text-white px-5 py-2 rounded-xl hover:bg-green-700"
     >
       Submit Review
     </button>
