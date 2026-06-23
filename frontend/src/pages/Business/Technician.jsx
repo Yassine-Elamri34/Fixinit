@@ -22,7 +22,7 @@ function Technician() {
       return;
     }
     try {
-      await axios.post("https://2.24.202.188/api/Request/create", {
+      await axios.post("https://api.fixinit.ca:5000/api/Request/create", {
         businessOwnerId: 1,
         technicianId: selectedTechnicianId,
         title,
@@ -41,7 +41,7 @@ function Technician() {
 
   const fetchTechnicians = async () => {
     try {
-      const response = await axios.get("https://2.24.202.188/api/Technician/all");
+      const response = await axios.get("https://api.fixinit.ca:5000/api/Technician/all");
       console.log("FIRST TECHNICIAN:", response.data[0]);
       setTechnicians(response.data);
     } catch (error) {
@@ -51,7 +51,7 @@ function Technician() {
 
   const fetchReviews = async () => {
     try {
-      const response = await axios.get("https://2.24.202.188/api/Review");
+      const response = await axios.get("https://api.fixinit.ca:5000/api/Review");
       console.log("FIRST REVIEW:", response.data[0]);
       setReviews(response.data);
     } catch (error) {

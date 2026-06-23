@@ -19,7 +19,7 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await axios.post(
-      "https://2.24.202.188/api/Auth/login",
+      "https://api.fixinit.ca:5000/api/Auth/login",
       {
         email,
         password,

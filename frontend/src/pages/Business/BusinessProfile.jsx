@@ -39,7 +39,7 @@ function BusinessProfile() {
   try {
 
     const response = await axios.get(
-      `https://2.24.202.188/api/BusinessOwner/profile/${userId}`
+      `https://api.fixinit.ca:5000/api/BusinessOwner/profile/${userId}`
     );
 
     setBusinessName(
@@ -97,7 +97,7 @@ const updateProfile = async () => {
   try {
 
     const response = await axios.post(
-      "https://2.24.202.188/api/BusinessOwner/update-profile",
+      "https://api.fixinit.ca:5000/api/BusinessOwner/update-profile",
       {
         userId,
         businessName,

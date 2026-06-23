@@ -57,7 +57,7 @@ const fetchBusinessProfile = async () => {
   try {
 
     const response = await axios.get(
-      `https://2.24.202.188/api/BusinessOwner/profile/${userId}`
+      `https://api.fixinit.ca:5000/api/BusinessOwner/profile/${userId}`
     );
 
     setBusiness(response.data);
@@ -74,7 +74,7 @@ const approveCompletion = async (requestId) => {
   try {
 
     await axios.put(
-      `https://2.24.202.188/api/Request/approve-completion/${requestId}`
+      `https://api.fixinit.ca:5000/api/Request/approve-completion/${requestId}`
     );
 
     fetchRequests();
@@ -91,7 +91,7 @@ const approveCompletion = async (requestId) => {
 const fetchRequests = async () => {
   try {
     const response = await axios.get(
-      `https://2.24.202.188/api/Request/business/${businessOwnerId}`
+      `https://api.fixinit.ca:5000/api/Request/business/${businessOwnerId}`
     );
 
     setRequests(response.data);
@@ -105,7 +105,7 @@ const fetchRequests = async () => {
 const submitReview = async (request) => {
   try {
     await axios.post(
-      "https://2.24.202.188/api/Review/create",
+      "https://api.fixinit.ca:5000/api/Review/create",
       {
         requestId: request.requestId,
         technicianId: request.technicianId,
