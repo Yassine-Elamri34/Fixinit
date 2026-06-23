@@ -28,7 +28,7 @@ const [completionNotes, setCompletionNotes] = useState({});
   try {
 
     await axios.put(
-      "https://localhost:7294/api/Request/update-completion",
+      "https://2.24.202.188/api/Request/update-completion",
       {
   requestId,
   completionStatus: "Pending Approval",
@@ -50,7 +50,7 @@ const [completionNotes, setCompletionNotes] = useState({});
 const fetchRequests = async () => {
   try {
     const response = await axios.get(
-      `https://localhost:7294/api/Request/technician/${technicianId}`
+      `https://2.24.202.188/api/Request/technician/${technicianId}`
     );
 
     setRequests(response.data);
@@ -61,7 +61,7 @@ const fetchRequests = async () => {
 
 const acceptRequest = async (requestId) => {
   await axios.put(
-    `https://localhost:7294/api/Request/accept/${requestId}`
+    `https://2.24.202.188/api/Request/accept/${requestId}`
   );
 
   fetchRequests();
@@ -69,7 +69,7 @@ const acceptRequest = async (requestId) => {
 
 const declineRequest = async (requestId) => {
   await axios.put(
-    `https://localhost:7294/api/Request/decline/${requestId}`
+    `https://2.24.202.188/api/Request/decline/${requestId}`
   );
 
   fetchRequests();
@@ -78,7 +78,7 @@ const declineRequest = async (requestId) => {
   const fetchTechnician = async () => {
     try {
       const response = await axios.get(
-        "https://localhost:7294/api/Technician/profile/1"
+        "https://2.24.202.188/api/Technician/profile/1"
       );
 
       setTechnician(response.data);

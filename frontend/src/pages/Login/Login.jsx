@@ -19,7 +19,7 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await axios.post(
-      "https://localhost:7294/api/Auth/login",
+      "https://2.24.202.188/api/Auth/login",
       {
         email,
         password,

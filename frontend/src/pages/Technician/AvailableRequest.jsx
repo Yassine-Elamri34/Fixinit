@@ -26,7 +26,7 @@ function AvailableRequest() {
   const markCompleted = async (requestId) => {
     try {
       await axios.put(
-        "https://localhost:7294/api/Request/update-completion",
+        "https://2.24.202.188/api/Request/update-completion",
         {
           requestId,
           completionStatus: "Pending Approval",
@@ -43,7 +43,7 @@ function AvailableRequest() {
   const fetchRequests = async () => {
     try {
       const response = await axios.get(
-        `https://localhost:7294/api/Request/technician/${technicianId}`
+        `https://2.24.202.188/api/Request/technician/${technicianId}`
       );
       setRequests(response.data);
     } catch (error) {
@@ -52,12 +52,12 @@ function AvailableRequest() {
   };
 
   const acceptRequest = async (requestId) => {
-    await axios.put(`https://localhost:7294/api/Request/accept/${requestId}`);
+    await axios.put(`https://2.24.202.188/api/Request/accept/${requestId}`);
     fetchRequests();
   };
 
   const declineRequest = async (requestId) => {
-    await axios.put(`https://localhost:7294/api/Request/decline/${requestId}`);
+    await axios.put(`https://2.24.202.188/api/Request/decline/${requestId}`);
     fetchRequests();
   };
 
@@ -65,7 +65,7 @@ function AvailableRequest() {
     const fetchTechnician = async () => {
       try {
         const response = await axios.get(
-          "https://localhost:7294/api/Technician/profile/1"
+          "https://2.24.202.188/api/Technician/profile/1"
         );
         setTechnician(response.data);
       } catch (error) {

@@ -76,11 +76,11 @@ function Chatbot() {
   try {
 
     const response = await axios.post(
-      "https://localhost:7294/api/Chatbot",
-      {
-        message: currentInput,
-      }
-    );
+  "http://2.24.202.188/api/Chatbot",
+  {
+    message: currentInput,
+  }
+);
 
     const aiMessage = {
       sender: "AI",

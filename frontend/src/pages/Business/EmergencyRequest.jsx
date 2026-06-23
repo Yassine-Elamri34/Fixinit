@@ -133,7 +133,7 @@ function EmergencyAccess() {
               </p>
 
               <h2 className="text-7xl font-bold text-red-600 mt-4">
-                $10
+                $30
               </h2>
 
               <p className="text-xl text-gray-500 mt-2">

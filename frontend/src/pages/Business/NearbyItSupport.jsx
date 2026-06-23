@@ -19,7 +19,7 @@ const searchTechnicians = async () => {
   try {
 
     const response = await axios.get(
-      `https://localhost:7294/api/Technician/search?region=${region}`
+      `https://2.24.202.188/api/Technician/search?region=${region}`
     );
 
     setTechnicians(response.data);
@@ -107,7 +107,7 @@ const searchTechnicians = async () => {
 
   {tech.profilePicture ? (
     <img
-      src={`https://localhost:7294${tech.profilePicture}`}
+      src={`https://2.24.202.188${tech.profilePicture}`}
       alt="Technician"
       className="w-full h-full object-cover"
     />

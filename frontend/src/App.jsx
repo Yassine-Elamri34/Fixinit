@@ -24,7 +24,7 @@ import { Routes, Route , useLocation } from 'react-router-dom'
 function App() {
 
 const location = useLocation()
-const hideLayout =location.pathname === '/technician-dashboard' || location.pathname === '/emergency-request' || location.pathname === '/nearby-it' || location.pathname === '/available-requests' || location.pathname === '/business-dashboard'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician' || location.pathname === '/emergency'
+const hideLayout =location.pathname === '/technician-dashboard' ||location.pathname === '/payment' || location.pathname === '/emergency-request' || location.pathname === '/nearby-it' || location.pathname === '/available-requests' || location.pathname === '/business-dashboard'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician'|| location.pathname === '/admin-dashboard'|| location.pathname === '/technician-profile' || location.pathname === '/technician-schedule' || location.pathname === '/business-profile' || location.pathname === '/technician' || location.pathname === '/emergency'
 
 
 

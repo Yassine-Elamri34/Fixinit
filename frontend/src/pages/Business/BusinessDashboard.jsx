@@ -32,7 +32,7 @@ const fetchReviews = async () => {
   try {
 
     const response = await axios.get(
-      "https://localhost:7294/api/Review"
+      "https://2.24.202.188/api/Review"
     );
 
     console.log("Reviews:", response.data);
@@ -57,7 +57,7 @@ const fetchBusinessProfile = async () => {
   try {
 
     const response = await axios.get(
-      `https://localhost:7294/api/BusinessOwner/profile/${userId}`
+      `https://2.24.202.188/api/BusinessOwner/profile/${userId}`
     );
 
     setBusiness(response.data);
@@ -74,7 +74,7 @@ const approveCompletion = async (requestId) => {
   try {
 
     await axios.put(
-      `https://localhost:7294/api/Request/approve-completion/${requestId}`
+      `https://2.24.202.188/api/Request/approve-completion/${requestId}`
     );
 
     fetchRequests();
@@ -91,7 +91,7 @@ const approveCompletion = async (requestId) => {
 const fetchRequests = async () => {
   try {
     const response = await axios.get(
-      `https://localhost:7294/api/Request/business/${businessOwnerId}`
+      `https://2.24.202.188/api/Request/business/${businessOwnerId}`
     );
 
     setRequests(response.data);
@@ -105,7 +105,7 @@ const fetchRequests = async () => {
 const submitReview = async (request) => {
   try {
     await axios.post(
-      "https://localhost:7294/api/Review/create",
+      "https://2.24.202.188/api/Review/create",
       {
         requestId: request.requestId,
         technicianId: request.technicianId,

@@ -41,7 +41,7 @@ const [lastName, setLastName] = useState("");
   const fetchProfile = async () => {
     try {
       const response = await axios.get(
-        `https://localhost:7294/api/Technician/profile/${userId}`
+        `https://2.24.202.188/api/Technician/profile/${userId}`
       );
       setFirstName(response.data.firstName || "");
 setLastName(response.data.lastName || "");
@@ -74,7 +74,7 @@ const updateProfile = async () => {
   try {
 
     const response = await axios.post(
-      "https://localhost:7294/api/Technician/update-profile",
+      "https://2.24.202.188/api/Technician/update-profile",
    {
   userId,
   firstName,
@@ -118,7 +118,7 @@ const updateProfile = async () => {
       formData.append("file", selectedFile);
 
       const response = await axios.post(
-        "https://localhost:7294/api/Technician/upload-picture",
+        "https://2.24.202.188/api/Technician/upload-picture",
         formData
       );
 
@@ -143,7 +143,7 @@ const updateProfile = async () => {
           <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center flex-shrink-0">
             {profilePicture ? (
               <img
-                src={`https://localhost:7294${profilePicture}`}
+                src={`https://2.24.202.188${profilePicture}`}
                 alt="Technician"
                 className="w-full h-full object-cover"
               />

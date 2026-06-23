@@ -23,7 +23,7 @@ function TechnicianSchedule() {
     try {
 
       const response = await axios.get(
-        `https://localhost:7294/api/Technician/schedule/${technicianId}`
+        `https://2.24.202.188/api/Technician/schedule/${technicianId}`
       );
 
       setSchedule((currentSchedule) =>
@@ -66,7 +66,7 @@ function TechnicianSchedule() {
     try {
 
       const response = await axios.post(
-        "https://localhost:7294/api/Technician/save-schedule",
+        "https://2.24.202.188/api/Technician/save-schedule",
         schedule.map((item) => ({
           technicianId,
           dayOfWeek: item.day,
