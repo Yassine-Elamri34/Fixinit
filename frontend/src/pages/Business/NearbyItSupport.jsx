@@ -19,7 +19,7 @@ const searchTechnicians = async () => {
   try {
 
     const response = await axios.get(
-      `https://api.fixinit.ca:5000/api/Technician/search?region=${region}`
+      `https://api.fixinit.ca/api/Technician/search?region=${region}`
     );
 
     setTechnicians(response.data);
@@ -107,7 +107,7 @@ const searchTechnicians = async () => {
 
   {tech.profilePicture ? (
     <img
-      src={`https://api.fixinit.ca:5000${tech.profilePicture}`}
+      src={`https://api.fixinit.ca${tech.profilePicture}`}
       alt="Technician"
       className="w-full h-full object-cover"
     />

@@ -14,7 +14,7 @@ export default function AdminDashboard() {
 const [businesses, setBusinesses] = useState([]);
 const activateTechnician = async (id) => {
   await axios.put(
-    `https://api.fixinit.ca:5000/api/Admin/technician/activate/${id}`
+    `https://api.fixinit.ca/api/Admin/technician/activate/${id}`
   );
 
   fetchTechnicians();
@@ -22,7 +22,7 @@ const activateTechnician = async (id) => {
 
 const blockTechnician = async (id) => {
   await axios.put(
-    `https://api.fixinit.ca:5000/api/Admin/technician/block/${id}`
+    `https://api.fixinit.ca/api/Admin/technician/block/${id}`
   );
 
   fetchTechnicians();
@@ -30,7 +30,7 @@ const blockTechnician = async (id) => {
 
 const deleteTechnician = async (id) => {
   await axios.delete(
-    `https://api.fixinit.ca:5000/api/Admin/technician/${id}`
+    `https://api.fixinit.ca/api/Admin/technician/${id}`
   );
 
   fetchTechnicians();
@@ -38,7 +38,7 @@ const deleteTechnician = async (id) => {
 
 const suspendBusiness = async (id) => {
   await axios.put(
-    `https://api.fixinit.ca:5000/api/Admin/business/suspend/${id}`
+    `https://api.fixinit.ca/api/Admin/business/suspend/${id}`
   );
 
   fetchBusinesses();
@@ -46,7 +46,7 @@ const suspendBusiness = async (id) => {
 
 const activateBusiness = async (id) => {
   await axios.put(
-    `https://api.fixinit.ca:5000/api/Admin/business/activate/${id}`
+    `https://api.fixinit.ca/api/Admin/business/activate/${id}`
   );
 
   fetchBusinesses();
@@ -54,7 +54,7 @@ const activateBusiness = async (id) => {
 
 const blockBusiness = async (id) => {
   await axios.put(
-    `https://api.fixinit.ca:5000/api/Admin/business/block/${id}`
+    `https://api.fixinit.ca/api/Admin/business/block/${id}`
   );
 
   fetchBusinesses();
@@ -62,14 +62,14 @@ const blockBusiness = async (id) => {
 
 const deleteBusiness = async (id) => {
   await axios.delete(
-    `https://api.fixinit.ca:5000/api/Admin/business/${id}`
+    `https://api.fixinit.ca/api/Admin/business/${id}`
   );
 
   fetchBusinesses();
 };
 const fetchTechnicians = async () => {
   const response = await axios.get(
-    "https://api.fixinit.ca:5000/api/Admin/technicians"
+    "https://api.fixinit.ca/api/Admin/technicians"
   );
 
   setTechnicians(response.data);
@@ -77,14 +77,14 @@ const fetchTechnicians = async () => {
 
 const fetchBusinesses = async () => {
   const response = await axios.get(
-    "https://api.fixinit.ca:5000/api/Admin/businesses"
+    "https://api.fixinit.ca/api/Admin/businesses"
   );
 
   setBusinesses(response.data);
 };
 const suspendTechnician = async (id) => {
   await axios.put(
-    `https://api.fixinit.ca:5000/api/Admin/technician/suspend/${id}`
+    `https://api.fixinit.ca/api/Admin/technician/suspend/${id}`
   );
 
   fetchTechnicians();

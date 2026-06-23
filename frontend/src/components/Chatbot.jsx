@@ -76,7 +76,7 @@ function Chatbot() {
   try {
 
     const response = await axios.post(
-  "http://api.fixinit.ca:5000/api/Chatbot",
+  "https://api.fixinit.ca/api/Chatbot",
   {
     message: currentInput,
   }

@@ -19,7 +19,7 @@ const handleSubmit = async (e) => {
   //stop the page from refreshing
 try {
   const response = await axios.post(
-    'https://api.fixinit.ca:5000/api/Auth/register',
+    'https://api.fixinit.ca/api/Auth/register',
     {
       name,
       email,

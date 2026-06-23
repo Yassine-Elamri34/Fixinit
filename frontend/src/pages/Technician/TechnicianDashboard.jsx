@@ -28,7 +28,7 @@ const [completionNotes, setCompletionNotes] = useState({});
   try {
 
     await axios.put(
-      "https://api.fixinit.ca:5000/api/Request/update-completion",
+      "https://api.fixinit.ca/api/Request/update-completion",
       {
   requestId,
   completionStatus: "Pending Approval",
@@ -50,7 +50,7 @@ const [completionNotes, setCompletionNotes] = useState({});
 const fetchRequests = async () => {
   try {
     const response = await axios.get(
-      `https://api.fixinit.ca:5000/api/Request/technician/${technicianId}`
+      `https://api.fixinit.ca/api/Request/technician/${technicianId}`
     );
 
     setRequests(response.data);
@@ -61,7 +61,7 @@ const fetchRequests = async () => {
 
 const acceptRequest = async (requestId) => {
   await axios.put(
-    `https://api.fixinit.ca:5000/api/Request/accept/${requestId}`
+    `https://api.fixinit.ca/api/Request/accept/${requestId}`
   );
 
   fetchRequests();
@@ -69,7 +69,7 @@ const acceptRequest = async (requestId) => {
 
 const declineRequest = async (requestId) => {
   await axios.put(
-    `https://api.fixinit.ca:5000/api/Request/decline/${requestId}`
+    `https://api.fixinit.ca/api/Request/decline/${requestId}`
   );
 
   fetchRequests();
@@ -78,7 +78,7 @@ const declineRequest = async (requestId) => {
   const fetchTechnician = async () => {
     try {
       const response = await axios.get(
-        "https://api.fixinit.ca:5000/api/Technician/profile/1"
+        "https://api.fixinit.ca/api/Technician/profile/1"
       );
 
       setTechnician(response.data);
@@ -199,7 +199,7 @@ const declineRequest = async (requestId) => {
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-gray-200">
   {technician?.profilePicture ? (
     <img
-      src={`https://localhost:7294${technician.profilePicture}`}
+      src={`https://api.fixinit.ca${technician.profilePicture}`}
       alt="Profile"
       className="w-full h-full object-cover"
     />
