@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function BusinessProfile() {
 
       const navigate = useNavigate();
-  const userId = 1;
+  const userId = localStorage.getItem("userId");
 
   const [businessName, setBusinessName] = useState("");
 
