@@ -108,7 +108,7 @@ const submitReview = async (request) => {
       {
         requestId: request.requestId,
         technicianId: request.technicianId,
-        businessOwnerId: businessOwnerId,
+        businessOwnerId: userId,
         rating: ratings[request.requestId],
         comment: comments[request.requestId] || ""
       }
