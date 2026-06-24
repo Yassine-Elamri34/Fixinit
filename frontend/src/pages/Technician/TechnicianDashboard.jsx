@@ -17,7 +17,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function TechnicianDashboard() {
- const technicianId = 1;
+ const userId = localStorage.getItem("userId");
 const [requests, setRequests] = useState([]);
 const [completionNotes, setCompletionNotes] = useState({});
   const navigate = useNavigate();
@@ -36,7 +36,9 @@ const [completionNotes, setCompletionNotes] = useState({});
 }
     );
 
-    fetchRequests();
+    fetchRequests(
+  technician.technicianId
+);
 
     alert("Request marked completed");
 
@@ -47,13 +49,14 @@ const [completionNotes, setCompletionNotes] = useState({});
   }
 
 };
-const fetchRequests = async () => {
+const fetchRequests = async (technicianId) => {
   try {
     const response = await axios.get(
       `https://api.fixinit.ca/api/Request/technician/${technicianId}`
     );
 
     setRequests(response.data);
+
   } catch (error) {
     console.log(error);
   }
@@ -64,7 +67,9 @@ const acceptRequest = async (requestId) => {
     `https://api.fixinit.ca/api/Request/accept/${requestId}`
   );
 
-  fetchRequests();
+  fetchRequests(
+  technician.technicianId
+);
 };
 
 const declineRequest = async (requestId) => {
@@ -72,23 +77,36 @@ const declineRequest = async (requestId) => {
     `https://api.fixinit.ca/api/Request/decline/${requestId}`
   );
 
-  fetchRequests();
+  fetchRequests(
+  technician.technicianId
+);
 };
  useEffect(() => {
+
   const fetchTechnician = async () => {
+
     try {
+
       const response = await axios.get(
-        "https://api.fixinit.ca/api/Technician/profile/1"
+        `https://api.fixinit.ca/api/Technician/profile/${userId}`
       );
 
       setTechnician(response.data);
+
+      fetchRequests(
+        response.data.technicianId
+      );
+
     } catch (error) {
+
       console.log(error);
+
     }
+
   };
 
   fetchTechnician();
-  fetchRequests();
+
 }, []);
 
 

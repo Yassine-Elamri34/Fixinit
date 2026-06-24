@@ -24,8 +24,7 @@ function TechnicianProfile() {
  const [firstName, setFirstName] = useState("");
 const [lastName, setLastName] = useState("");
   const navigate = useNavigate();
-  const userId = 1;
-  const technicianId = 1;
+  const userId = localStorage.getItem("userId");
 
   const [profilePicture, setProfilePicture] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);

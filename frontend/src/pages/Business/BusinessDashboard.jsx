@@ -22,8 +22,7 @@ const [existingReviews, setExistingReviews] = useState([]);
 const [ratings, setRatings] = useState({});
 const [comments, setComments] = useState({});
 const [reviewedRequests, setReviewedRequests] = useState([]);
-const userId = 1;
-const businessOwnerId = 1;
+const userId = localStorage.getItem("userId");
 const [requests, setRequests] = useState([]);
 const [business, setBusiness] = useState(null);
 
@@ -91,7 +90,7 @@ const approveCompletion = async (requestId) => {
 const fetchRequests = async () => {
   try {
     const response = await axios.get(
-      `https://api.fixinit.ca/api/Request/business/${businessOwnerId}`
+      `https://api.fixinit.ca/api/Request/business/${userId}`
     );
 
     setRequests(response.data);

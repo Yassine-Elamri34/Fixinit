@@ -22,13 +22,15 @@ function Technician() {
       return;
     }
     try {
-      await axios.post("https://api.fixinit.ca/api/Request/create", {
-        businessOwnerId: 1,
-        technicianId: selectedTechnicianId,
-        title,
-        description,
-        status: "Pending",
-      });
+      const userId = localStorage.getItem("userId");
+
+await axios.post("https://api.fixinit.ca/api/Request/create", {
+  businessOwnerId: userId,
+  technicianId: selectedTechnicianId,
+  title,
+  description,
+  status: "Pending",
+});
       alert("Request submitted successfully");
       setSubmittedRequests([...submittedRequests, selectedTechnicianId]);
       setShowRequestForm(false);
